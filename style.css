@@ -1,9 +1,26 @@
+body {
+    background-color: #718725;
+}
+
 .hide{
     display: none;
     width: 100px;
 }
 canvas{
     background-color: #844fb5;
-    border-style: solid;
-    border-width: 5px;
+    display: block;
+    margin: 0 auto;
+    width: 1620px;
+    height: 910px;
+    border: none;
+}
+
+@font-face {
+    font-family: eight-bit-pusab;
+    src: url(8-bit-pusab.ttf);
+}
+
+@font-face {
+    font-family: Pixeled;
+    src: url(Pixeled.ttf);
 }

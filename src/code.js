@@ -1,5 +1,7 @@
 var ctx, c;
 
+
+
 window.onload = function () {
 	c = document.getElementById("myCanvas");
 	ctx = c.getContext("2d");
@@ -9,7 +11,33 @@ window.onload = function () {
 function frame() {
     drawAssets();
     animateAssets(assets.players);
+    drawTitle();
+    drawScrolls();
     window.requestAnimationFrame(frame);
+}
+
+function drawTitle(){
+    ctx.fillStyle = '#36260e';
+
+    ctx.font="60px eight-bit-pusab";
+    ctx.fillText("day",183,153);
+    
+    ctx.font="50px eight-bit-pusab";
+    ctx.fillText("1",383,157);
+}
+
+function drawScrolls(){
+    ctx.font="48px Pixeled";
+    ctx.fillText("CASTLE",166,362);
+
+    ctx.font="48px Pixeled";
+    ctx.fillText("BAKERY",166,523);
+
+    ctx.font="48px Pixeled";
+    ctx.fillText("ORCHARD",150,685);
+
+    ctx.font="48px Pixeled";
+    ctx.fillText("MEADOWS",146,843);
 }
 
 function animateAssets(container) {
@@ -42,7 +70,12 @@ function animateAssets(container) {
 };
 
 function drawAsset(asset) {
-    ctx.drawImage(asset.image, asset.x, asset.y);
+    if (asset.width) {
+        ctx.drawImage(asset.image, asset.x, asset.y, asset.width, asset.height);
+    }
+    else {
+        ctx.drawImage(asset.image, asset.x, asset.y);
+    }
 }
 
 function drawAssets () {

@@ -4,21 +4,28 @@ var getButtonImage = function (){
     return this.images[0];
 }
 
+console.log(document.getElementById("text-location1-rollover").width);
+
 var locations = [
     {
-        name: 'bakery',
-        x: 708,
-        y: 99
-    },
-    {
-        name: 'woods',
-        x: 619,
-        y: 600
-    },
-    {
         name: 'castle',
-        x: 346,
-        y: 222
+        x: 1265,
+        y: 262
+    },
+    {
+        name: 'bakery',
+        x: 748,
+        y: 513
+    },
+    {
+        name: 'orchard',
+        x: 1285,
+        y: 640
+    },
+    {
+        name: 'meadows',
+        x: 929,
+        y: 221
     }
 ];
 
@@ -49,8 +56,10 @@ var assets = {
                 
             ], 
             image: document.getElementById("text-location1-rollover"),
-            x: 50, 
-            y: 50,
+            x: 20, 
+            y: 238,
+            width: document.getElementById("text-location1-rollover").width,
+            height: document.getElementById("text-location1-rollover").height,
             location: locations[0]
         },
         {
@@ -61,8 +70,8 @@ var assets = {
                 
             ], 
             image: document.getElementById("text-location1"),
-            x: 50, 
-            y: 150,
+            x: 20, 
+            y: 394,
             location: locations[1]
         },
         {
@@ -73,9 +82,21 @@ var assets = {
                 
             ], 
             image: document.getElementById("text-location1"),
-            x: 50, 
-            y: 250,
+            x: 20, 
+            y: 558,
             location: locations[2]
+        },
+        {
+            active: false,
+            images: [
+                document.getElementById("text-location1"),
+                document.getElementById("text-location1-rollover"),
+                
+            ], 
+            image: document.getElementById("text-location1"),
+            x: 20, 
+            y: 718,
+            location: locations[3]
         }
     ],
 }

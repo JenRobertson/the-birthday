@@ -14,6 +14,9 @@ function frame() {
         case 'activity_select':
             drawActivitySelect();
             break;
+        case 'activity':
+            drawActivity();
+            break;
     }
     window.requestAnimationFrame(frame);
 }

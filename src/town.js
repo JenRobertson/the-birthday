@@ -57,7 +57,7 @@ var townData = {
             image: document.getElementById("scroll-active"),
             x: 20, 
             y: 238,
-            location: locations[0]
+            value: locations[0]
         },
         {
             active: false,
@@ -69,7 +69,7 @@ var townData = {
             image: document.getElementById("scroll"),
             x: 20, 
             y: 394,
-            location: locations[1]
+            value: locations[1]
         },
         {
             active: false,
@@ -81,7 +81,7 @@ var townData = {
             image: document.getElementById("scroll"),
             x: 20, 
             y: 558,
-            location: locations[2]
+            value: locations[2]
         },
         {
             active: false,
@@ -93,7 +93,7 @@ var townData = {
             image: document.getElementById("scroll"),
             x: 20, 
             y: 718,
-            location: locations[3]
+            value: locations[3]
         }
     ],
 };

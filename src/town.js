@@ -19,6 +19,7 @@ function drawTownTitle(day){
 }
 
 function drawScrolls(){
+    ctx.fillStyle = brown;
     ctx.font="48px Pixeled";
     ctx.fillText("CASTLE",166,362);
     ctx.fillText("BAKERY",166,523);

@@ -69,6 +69,7 @@ var game = {
     screen: "town",
     location: locations[0],
     activity: null,
+    outcome: null,
     stats: {
         wealth: {
             label: 'Wealth',

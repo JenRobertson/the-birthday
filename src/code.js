@@ -1,48 +1,21 @@
-var canvas_town, c;
+var ctx, c;
 
 window.onload = function () {
-    canvas_town_element = document.getElementById("canvas_town");
-    canvas_choose_event_element = document.getElementById("canvas_choose_event");
-
-    canvas_town = canvas_town_element.getContext("2d");
-    canvas_choose_event = canvas_choose_event_element.getContext("2d");
+    canvasElement = document.getElementById("ctx");
+    ctx = canvasElement.getContext("2d");
     window.requestAnimationFrame(frame);
 }
 
 function frame() {
-    drawAssets(assets.town);
-    animateAssets(assets.town.players);
-    drawTitle();
-    drawScrolls();
-    drawStats();
-    window.requestAnimationFrame(frame);
-}
-
-function drawTitle(){
-    canvas_town.fillStyle = '#36260e';
-
-    canvas_town.font="60px eight-bit-pusab";
-    canvas_town.fillText("day",183,153);
-    
-    canvas_town.font="50px eight-bit-pusab";
-    canvas_town.fillText("1",383,157);
-}
-
-function drawStats(){
-    canvas_town.font="20px Pixeled";
-    var i = 0;
-    for (var key in stats){
-        canvas_town.fillText(`${stats[key].label}: ${stats[key].value}`, assets.town.stats[0].x + 20, assets.town.stats[0].y + 50 + i);
-        i+= 50;
+    switch (game.screen) {
+        case 'town':
+            drawTown();
+            break;
+        case 'activity_select':
+            drawActivitySelect();
+            break;
     }
-}
-
-function drawScrolls(){
-    canvas_town.font="48px Pixeled";
-    canvas_town.fillText("CASTLE",166,362);
-    canvas_town.fillText("BAKERY",166,523);
-    canvas_town.fillText("ORCHARD",150,685);
-    canvas_town.fillText("MEADOWS",146,843);
+    window.requestAnimationFrame(frame);
 }
 
 function animateAssets(container) {
@@ -75,7 +48,7 @@ function animateAssets(container) {
 };
 
 function drawAsset(asset) {
-    canvas_town.drawImage(asset.image, asset.x, asset.y);
+    ctx.drawImage(asset.image, asset.x, asset.y);
 }
 
 function drawAssets (assetsObject) {
@@ -85,3 +58,20 @@ function drawAssets (assetsObject) {
         });
     }
 }
+
+function drawStats(x, y){
+    statsImage = {
+        image: document.getElementById("stats"),
+        x,
+        y
+    };
+    drawAsset(statsImage);
+    ctx.font="20px Pixeled";
+    var i = 0;
+    for (var key in game.stats){
+        ctx.fillText(`${game.stats[key].label}: ${game.stats[key].value}`, statsImage.x + 20, statsImage.y + 50 + i);
+        i+= 50;
+    }
+}
+
+var brown = '#36260e';

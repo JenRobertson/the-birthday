@@ -1,64 +1,96 @@
 document.onkeydown = function(e) {
-    switch (e.keyCode) {
-        case 38://up
-            up();
+    switch (game.screen) {
+        case 'town':
+            townKeyboard(e);
             break;
-           case 40://down
-            down();
-            // canvas_town_element.style.display = "none";
-            // canvas_choose_event_element.style.display = "block";
-            break;
-        case 13://enter
+        case 'activity_select':
+            activitySelectKeyboard(e);
             break;
     }
 };
 
-function movePlayer(location){
-    assets.town.players[0].destinationX = location.x;
-    assets.town.players[0].destinationY = location.y;
+function townKeyboard(e){
+    switch (e.keyCode) {
+        case 38://up
+            movePlayer(buttons_up(townData.buttons));
+            break;
+           case 40://down
+            movePlayer(buttons_down(townData.buttons));
+            break;
+        case 13://enter
+            town_enter();
+            break;
+    }
 }
 
-function down() {
-    for (let i = 0; i < assets.town.buttons.length; i++){
-        button = assets.town.buttons[i];
+function activitySelectKeyboard(e){
+    switch (e.keyCode) {
+        case 38://up
+            buttons_up(activityData.buttons);
+            break;
+        case 40://down
+            buttons_down(activityData.buttons);
+            break;
+        case 13://enter
+            activitySelectEnter();
+            break;
+    }
+}
+
+function movePlayer(location){
+    townData.players[0].destinationX = location.x;
+    townData.players[0].destinationY = location.y;
+    game.location = location;
+}
+
+function town_enter() {
+    game.screen = "activity_select";
+}
+
+function activitySelectEnter() {
+    game.screen = "town";
+}
+
+
+function buttons_down(buttonsArray) {
+    for (let i = 0; i < buttonsArray.length; i++){
+        button = buttonsArray[i];
         if (button.active) {
             button.active = false;
             button.image = button.images[0];
             
             var nextButton;
-            if (assets.town.buttons.length > [i + 1]){
-                nextButton = assets.town.buttons[i + 1];
+            if (buttonsArray.length > [i + 1]){
+                nextButton = buttonsArray[i + 1];
             }
             else {
-                nextButton = assets.town.buttons[0];
+                nextButton = buttonsArray[0];
             }
             nextButton.active = true;
             nextButton.image = button.images[1];
-            movePlayer(nextButton.location);
-            break;
+            return nextButton.location;
         }
     }
     
 }
 
-function up() {
-    for (let i = 0; i < assets.town.buttons.length; i++){
-        button = assets.town.buttons[i];
+function buttons_up(buttonsArray) {
+    for (let i = 0; i < buttonsArray.length; i++){
+        button = buttonsArray[i];
         if (button.active) {
             button.active = false;
             button.image = button.images[0];
 
             var nextButton;
             if (i > 0){
-                nextButton = assets.town.buttons[i - 1];
+                nextButton = buttonsArray[i - 1];
             }
             else {
-                nextButton = assets.town.buttons[assets.town.buttons.length - 1];
+                nextButton = buttonsArray[buttonsArray.length - 1];
             }
             nextButton.active = true;
             nextButton.image = button.images[1];
-            movePlayer(nextButton.location);
-            break;
+            return nextButton.location;
         }
     }
 }

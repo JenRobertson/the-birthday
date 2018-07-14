@@ -1,43 +1,48 @@
-var ctx, c;
-
-
+var canvas_town, c;
 
 window.onload = function () {
-	c = document.getElementById("myCanvas");
-	ctx = c.getContext("2d");
+    canvas_town_element = document.getElementById("canvas_town");
+    canvas_choose_event_element = document.getElementById("canvas_choose_event");
+
+    canvas_town = canvas_town_element.getContext("2d");
+    canvas_choose_event = canvas_choose_event_element.getContext("2d");
     window.requestAnimationFrame(frame);
 }
 
 function frame() {
-    drawAssets();
-    animateAssets(assets.players);
+    drawAssets(assets.town);
+    animateAssets(assets.town.players);
     drawTitle();
     drawScrolls();
+    drawStats();
     window.requestAnimationFrame(frame);
 }
 
 function drawTitle(){
-    ctx.fillStyle = '#36260e';
+    canvas_town.fillStyle = '#36260e';
 
-    ctx.font="60px eight-bit-pusab";
-    ctx.fillText("day",183,153);
+    canvas_town.font="60px eight-bit-pusab";
+    canvas_town.fillText("day",183,153);
     
-    ctx.font="50px eight-bit-pusab";
-    ctx.fillText("1",383,157);
+    canvas_town.font="50px eight-bit-pusab";
+    canvas_town.fillText("1",383,157);
+}
+
+function drawStats(){
+    canvas_town.font="20px Pixeled";
+    var i = 0;
+    for (var key in stats){
+        canvas_town.fillText(`${stats[key].label}: ${stats[key].value}`, assets.town.stats[0].x + 20, assets.town.stats[0].y + 50 + i);
+        i+= 50;
+    }
 }
 
 function drawScrolls(){
-    ctx.font="48px Pixeled";
-    ctx.fillText("CASTLE",166,362);
-
-    ctx.font="48px Pixeled";
-    ctx.fillText("BAKERY",166,523);
-
-    ctx.font="48px Pixeled";
-    ctx.fillText("ORCHARD",150,685);
-
-    ctx.font="48px Pixeled";
-    ctx.fillText("MEADOWS",146,843);
+    canvas_town.font="48px Pixeled";
+    canvas_town.fillText("CASTLE",166,362);
+    canvas_town.fillText("BAKERY",166,523);
+    canvas_town.fillText("ORCHARD",150,685);
+    canvas_town.fillText("MEADOWS",146,843);
 }
 
 function animateAssets(container) {
@@ -70,17 +75,12 @@ function animateAssets(container) {
 };
 
 function drawAsset(asset) {
-    if (asset.width) {
-        ctx.drawImage(asset.image, asset.x, asset.y, asset.width, asset.height);
-    }
-    else {
-        ctx.drawImage(asset.image, asset.x, asset.y);
-    }
+    canvas_town.drawImage(asset.image, asset.x, asset.y);
 }
 
-function drawAssets () {
-    for (var key in assets){
-        assets[key].forEach(function (asset) {
+function drawAssets (assetsObject) {
+    for (var key in assetsObject){
+        assetsObject[key].forEach(function (asset) {
             drawAsset(asset);
         });
     }

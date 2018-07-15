@@ -21,7 +21,6 @@ var activitySelectData = {
             images: [
                 document.getElementById("scroll-long"),
                 document.getElementById("scroll-long-active"),
-                
             ], 
             image: document.getElementById("scroll-long-active"),
             x: 420, 
@@ -33,7 +32,6 @@ var activitySelectData = {
             images: [
                 document.getElementById("scroll-long"),
                 document.getElementById("scroll-long-active"),
-                
             ], 
             image: document.getElementById("scroll-long"),
             x: 420, 

@@ -24,8 +24,14 @@ function townKeyboard(e){
         case 13://enter
             game.screen = "activity_select";
             game.activity = game.location.activities[0];
+            // set activity button labels
             activitySelectData.buttons[0].value = game.location.activities[0];
             activitySelectData.buttons[1].value = game.location.activities[1];
+            // reset activity_select buttons to top one
+            activitySelectData.buttons[0].active = true;
+            activitySelectData.buttons[0].image = activitySelectData.buttons[0].images[1];
+            activitySelectData.buttons[1].active = false;
+            activitySelectData.buttons[1].image = activitySelectData.buttons[0].images[0];
             break;
     }
 }
@@ -40,16 +46,18 @@ function movePlayer(location){
 function activitySelectKeyboard(e){
     switch (e.keyCode) {
         case 38://up
-            // game.activity = buttons_up(activitySelectData.buttons);
             game.activity = game.location.activities[buttons_up(activitySelectData.buttons)];
+            console.log(game.activity);
             break;
         case 40://down
-            // game.activity = buttons_down(activitySelectData.buttons)
             game.activity = game.location.activities[buttons_down(activitySelectData.buttons)];
+            console.log(game.activity);
             break;
         case 13://enter
             // todo make this select one properly form your stats
-            game.outcome = game.activity.outcomes[2];
+            
+            game.beginTextAnimation = true;
+            game.outcome = game.activity.outcomes[0];
             game.outcomeText = {
                 complete: false,
                 index: 0,
@@ -69,14 +77,25 @@ function activityKeyboard(e){
         //     movePlayer(locations[buttons_down(townData.buttons)]);
         //     break;
         case 13://enter
-            if (game.outcomeText.index + 1 >= game.outcome.text.length){
+            if (game.outcomeText.index + 1 >= game.outcome.text.length){ //all the text for outcome is finished
                 game.day++;
                 game.screen = "town";
+                game.activity = null;
+                game.outcome = null;
+                game.outcomeText = null;
             }
-            else {
-                game.outcomeText.index++;
-                if (game.outcome.text[game.outcomeText.index].updateStat) {
-                    eval(game.outcome.text[game.outcomeText.index].updateStat);
+            else { // update outcome data
+                if( game.outcomeText.complete) {//text animation complete
+                    game.beginTextAnimation = true;
+                    game.outcomeText.index++;
+                    if (game.outcome.text[game.outcomeText.index].updateStat) {
+                        eval(game.outcome.text[game.outcomeText.index].updateStat);
+                    }
+                    game.outcomeText.complete = false;
+                }
+                else {// text not finished animating
+                    //complete animation
+                    amountToCutOffText = 0;
                 }
             }
         break;

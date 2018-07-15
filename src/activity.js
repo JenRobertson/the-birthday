@@ -22,8 +22,6 @@ function drawOutcome() {
     drawAsset(frameAsset);
 }
 
-var beginTextAnimation = true;
-var textAnimateLength;
 
 // https://www.html5canvastutorials.com/tutorials/html5-canvas-wrap-text-tutorial/
 function drawText(){
@@ -32,16 +30,19 @@ function drawText(){
     wrapText(ctx, animateText(game.outcome.text[game.outcomeText.index].text), 300, 780, 1100, 45);
 }
 
+var amountToCutOffText;
+
 function animateText(text){
-    if(beginTextAnimation){
-        beginTextAnimation = false;
-        textAnimateLength = text.length;
+    if(game.beginTextAnimation){// so it only runs once
+        game.beginTextAnimation = false;
+        amountToCutOffText = text.length;
     }
 
-    if (textAnimateLength >= 0){
-        textAnimateLength--;
-        return text.slice(0, -textAnimateLength);
+    if (amountToCutOffText > 0){
+        amountToCutOffText--;
+        return text.slice(0, -amountToCutOffText);
     }
+    game.outcomeText.complete = true;
     return text;
 }
 
@@ -64,7 +65,6 @@ function wrapText(context, text, x, y, maxWidth, lineHeight) {
     }
     return context.fillText(line, x, y);
 }
-
 
 // generate stats messages from stats data
 function addStatsMessages(){

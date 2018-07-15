@@ -67,10 +67,51 @@ var locations = [
                 label: "Water flowers",
                 outcomes: [
                     {
-                        requirements: "game.stats.wealth < 1",
+                        requirements: "true",
                         text: [
-                            "You ask the baker if you can make a crumble.", 
-                            "You don\'t have enough money to buy any flower or apples."
+                            { 
+                                text: "While digging up the weeds you find a leather pouch containing gold coins.", 
+                            },
+                            {
+                                choice: [
+                                    {
+                                        label: "Give it into the palace guard in case someone has lost it",
+                                        outcome: [
+                                            {
+                                                text: [
+                                                    "The guard thanks you and says you are lovely."
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        charm: 2
+                                                    },
+                                                    lose: {
+                                                        finesse: 1
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: "Keep it for yourself",
+                                        outcome: [
+                                            {
+                                                text: [
+                                                    "You keep the money but can’t help feeling that you’ve been naughty."
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        wealth: 5
+                                                    },
+                                                    lose: {
+                                                        finesse: 1
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
                         ],
                         result: {
                             gain: {},

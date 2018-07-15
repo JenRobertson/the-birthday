@@ -37,9 +37,18 @@ function drawOutcome() {
 function drawText(){
     ctx.fillStyle = "#FFFFFF";
     ctx.font="48px pixel-font-2";
-    wrapText(ctx, animateText(game.outcome.text[game.outcomeText.index].text), 300, 780, 1100, 45);
-}
 
+    var textDataObject = game.outcome.text[game.outcomeText.index];
+    if (textDataObject.choice) {
+        drawAssets(activityChoicesButtonsData);
+        ctx.fillText(textDataObject.choice[0].label, 300, 780);
+        ctx.fillText(textDataObject.choice[1].label, 300, 830);
+        game.outcomeText.complete = true;
+    }
+    else {
+        wrapText(ctx, animateText(textDataObject.text), 300, 780, 1100, 45);
+    }
+}
 var amountToCutOffText;
 
 function animateText(text){
@@ -96,33 +105,60 @@ function addStatsMessages(){
     });
 }
 
-function createUpdateStatValue(type, statsObject){
+function createUpdateStatValue(type, textFunction){
     var value = '';
     var symbol = type === 'gain' ? '+' : '-';
-    if (Object.keys(statsObject).length > 0) {
-        for (var key in statsObject){
-            value += `game.stats.${key}.value${symbol}=${statsObject[key]};`;
+    if (Object.keys(textFunction).length > 0) {
+        for (var key in textFunction){
+            value += `game.stats.${key}.value${symbol}=${textFunction[key]};`;
         };
     }
     return value;
 }
 
-function createStatsMessage(type, statsObject){
+function createStatsMessage(type, textFunction){
     var message = '';
     index = 0;
-    if (Object.keys(statsObject).length > 0) {
+    if (Object.keys(textFunction).length > 0) {
         message += 'You ' + type + ' ';
-        for (var key in statsObject){
-            if (index > 0 && index < Object.keys(statsObject).length) {//middle one
+        for (var key in textFunction){
+            if (index > 0 && index < Object.keys(textFunction).length) {//middle one
                 message += ', '
             }
-            if (index > 0 && index === Object.keys(statsObject).length - 1) {//last one
+            if (index > 0 && index === Object.keys(textFunction).length - 1) {//last one
                 message += 'and '
             }
-            message += statsObject[key] + ' ' + key;
+            message += textFunction[key] + ' ' + key;
             index++;
         };
         message += '.';
     }
     return message;
 };
+
+var activityChoicesButtonsData = {
+    buttons: [
+        {
+            active: true,
+            images: [
+                document.getElementById("blank"),
+                document.getElementById("arrow"),
+            ], 
+            image: document.getElementById("arrow"),
+            x: 250,
+            y: 735,
+            value: 'poo1'
+        },
+        {
+            active: false,
+            images: [
+                document.getElementById("blank"),
+                document.getElementById("arrow"),
+            ], 
+            image: document.getElementById("blank"),
+            x: 250,
+            y: 790,
+            value: 'poo2'
+        },
+    ],
+}

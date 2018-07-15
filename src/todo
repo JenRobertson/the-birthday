@@ -2,6 +2,5 @@
 make it choose your outcome based on your stats
 
 // ask you questions
-// when you press enter the text goes to the edge
 
-// the button is only updating when you move the arrow
+pressing enter on the skills part doesnt skip it to end it deletes it

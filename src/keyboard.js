@@ -70,12 +70,19 @@ function activitySelectKeyboard(e){
 // activity
 function activityKeyboard(e){
     switch (e.keyCode) {
-        // case 38://up
-        //     movePlayer(locations[buttons_up(townData.buttons)]);
-        //     break;
-        // case 40://down
-        //     movePlayer(locations[buttons_down(townData.buttons)]);
-        //     break;
+        case 38://up
+            if (game.outcome.text[game.outcomeText.index].choice){
+                // console.log(game.outcome.text[game.outcomeText.index].choice[0].label);
+                buttons_up(activityChoicesButtonsData.buttons);
+                
+            }
+            break;
+        case 40://down
+            if (game.outcome.text[game.outcomeText.index].choice){
+                // console.log(game.outcome.text[game.outcomeText.index].choice[0].label);
+                buttons_down(activityChoicesButtonsData.buttons);
+            }
+            break;
         case 13://enter
             if (game.outcomeText.index + 1 >= game.outcome.text.length){ //all the text for outcome is finished
                 game.day++;
@@ -84,7 +91,13 @@ function activityKeyboard(e){
                 game.outcome = null;
                 game.outcomeText = null;
             }
-            else { // update outcome data
+            else { // more text to come
+                // if (game.outcome.text[0].choice) {
+                //     console.log('choice! from keyboard')
+                //     game.inChoice
+                //     // drawChoice(game.outcome.text[0].choice);
+                // }
+                //normal text
                 if( game.outcomeText.complete) {//text animation complete
                     game.beginTextAnimation = true;
                     game.outcomeText.index++;
@@ -123,7 +136,9 @@ function buttons_down(buttonsArray) {
 }
 
 function buttons_up(buttonsArray) {
+    console.log('buttons up');
     for (let i = 0; i < buttonsArray.length; i++){
+        
         button = buttonsArray[i];
         if (button.active) {
             button.active = false;
@@ -133,8 +148,10 @@ function buttons_up(buttonsArray) {
             if ( indexOfNewlySelectedButton < 0){
                 indexOfNewlySelectedButton = buttonsArray.length -1;
             }
+            console.log(buttonsArray[indexOfNewlySelectedButton].active);
             buttonsArray[indexOfNewlySelectedButton].active = true;
             buttonsArray[indexOfNewlySelectedButton].image = button.images[1];
+            console.log(buttonsArray[indexOfNewlySelectedButton].image);
             return indexOfNewlySelectedButton;
         }
     }

@@ -18,7 +18,17 @@ var paintingTemplate = {
 }
 
 function drawOutcome() {
-    drawAsset(paintingTemplate);
+    if (game.activity.image){
+        drawAsset({
+            image: game.activity.image,
+            x: frameAsset.x + 50,
+            y: frameAsset.y + 50
+        });
+    }
+    else{
+        drawAsset(paintingTemplate);
+    }
+
     drawAsset(frameAsset);
 }
 

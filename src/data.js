@@ -130,6 +130,7 @@ var locations = [
         activities: [
             {
                 label: "Study recipes",
+                image: document.getElementById('bakery-study'),
                 outcomes: [
                     {
                         requirements: "true",

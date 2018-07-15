@@ -4,10 +4,9 @@ body {
 
 .hide{
     display: none;
-    width: 100px;
 }
+
 canvas{
-    background-color: #844fb5;
     display: block;
     margin: 0 auto;
     width: 1620px;
@@ -17,10 +16,10 @@ canvas{
 
 @font-face {
     font-family: eight-bit-pusab;
-    src: url(8-bit-pusab.ttf);
+    src: url(fonts/8-bit-pusab.ttf);
 }
 
 @font-face {
     font-family: Pixeled;
-    src: url(Pixeled.ttf);
+    src: url(fonts/Pixeled.ttf);
 }

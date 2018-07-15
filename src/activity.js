@@ -28,6 +28,7 @@ function drawOutcome() {
     drawAsset(frameAsset);
 }
 
+// https://www.html5canvastutorials.com/tutorials/html5-canvas-wrap-text-tutorial/
 function drawText(){
     ctx.fillStyle = "#FFFFFF";
     ctx.font="25px Pixeled";

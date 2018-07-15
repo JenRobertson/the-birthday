@@ -87,6 +87,7 @@ var locations = [
                                                     charm: 2,
                                                     finesse: 1,
                                                 },
+                                                lose: {}
                                             }
                                         }
                                     
@@ -101,10 +102,11 @@ var locations = [
                                             ],
                                             result: {
                                                 gain: {
-                                                    charm:5
+                                                    wealth:5
                                                 },
                                                 lose: {
-                                                    finesse: 1
+                                                    finesse: 1,
+                                                    charm: 2
                                                 }
                                             }
                                         }

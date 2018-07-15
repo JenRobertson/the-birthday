@@ -95,6 +95,7 @@ function activityKeyboard(e){
                 if (game.outcome.text[game.outcomeText.index].choice) {//on choice screen
                     console.log('choice! from keyboard ' + innerChoiceIndex);
                     game.outcome = game.outcome.text[game.outcomeText.index].choice[innerChoiceIndex].outcome;
+                    addStatsMessages(game.outcome);
                     game.outcomeText.index = 0;
                     //reset button choice back to top 
                     activityChoicesButtonsData.buttons[0].active = true;

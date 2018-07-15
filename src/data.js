@@ -76,40 +76,40 @@ var locations = [
                                 choice: [
                                     {
                                         label: "Give it into the palace guard in case someone has lost it",
-                                        outcome: [
-                                            {
-                                                text: [
-                                                    "The guard thanks you and says you are lovely."
-                                                ],
-                                                result: {
-                                                    gain: {
-                                                        charm: 2
-                                                    },
-                                                    lose: {
-                                                        finesse: 1
-                                                    }
-                                                }
+                                        outcome: {
+                                            text:[
+                                                {
+                                                    text: "The guard thanks you and says you are lovely."
+                                                },
+                                            ],
+                                            result: {
+                                                gain: {
+                                                    charm: 2,
+                                                    finesse: 1,
+                                                },
                                             }
-                                        ]
+                                        }
+                                    
                                     },
                                     {
                                         label: "Keep it for yourself",
-                                        outcome: [
-                                            {
-                                                text: [
-                                                    "You keep the money but can’t help feeling that you’ve been naughty."
-                                                ],
-                                                result: {
-                                                    gain: {
-                                                        wealth: 5
-                                                    },
-                                                    lose: {
-                                                        finesse: 1
-                                                    }
+                                        outcome: {
+                                            text:[
+                                                {
+                                                    text: "You keep the money but can\'t help feeling that you\'ve been naughty."
+                                                },
+                                            ],
+                                            result: {
+                                                gain: {
+                                                    charm:5
+                                                },
+                                                lose: {
+                                                    finesse: 1
                                                 }
                                             }
-                                        ]
-                                    }
+                                        }
+                                    
+                                    },
                                 ]
                             }
                         ],
@@ -513,7 +513,7 @@ var game = {
     outcome: null,
     outcomeText: {
         complete: false,
-        index: 0,
+        index: 0
     },
     beginTextAnimation: true,
     stats: {

@@ -68,19 +68,19 @@ function activitySelectKeyboard(e){
 }
 
 // activity
+var innerChoiceIndex = 0;
 function activityKeyboard(e){
     switch (e.keyCode) {
         case 38://up
             if (game.outcome.text[game.outcomeText.index].choice){
                 // console.log(game.outcome.text[game.outcomeText.index].choice[0].label);
-                buttons_up(activityChoicesButtonsData.buttons);
-                
+                innerChoiceIndex = buttons_up(activityChoicesButtonsData.buttons);
             }
             break;
         case 40://down
             if (game.outcome.text[game.outcomeText.index].choice){
                 // console.log(game.outcome.text[game.outcomeText.index].choice[0].label);
-                buttons_down(activityChoicesButtonsData.buttons);
+                innerChoiceIndex = buttons_down(activityChoicesButtonsData.buttons);
             }
             break;
         case 13://enter
@@ -92,23 +92,29 @@ function activityKeyboard(e){
                 game.outcomeText = null;
             }
             else { // more text to come
-                // if (game.outcome.text[0].choice) {
-                //     console.log('choice! from keyboard')
-                //     game.inChoice
-                //     // drawChoice(game.outcome.text[0].choice);
-                // }
-                //normal text
-                if( game.outcomeText.complete) {//text animation complete
-                    game.beginTextAnimation = true;
-                    game.outcomeText.index++;
-                    if (game.outcome.text[game.outcomeText.index].updateStat) {
-                        eval(game.outcome.text[game.outcomeText.index].updateStat);
-                    }
-                    game.outcomeText.complete = false;
+                if (game.outcome.text[game.outcomeText.index].choice) {//on choice screen
+                    console.log('choice! from keyboard ' + innerChoiceIndex);
+                    game.outcome = game.outcome.text[game.outcomeText.index].choice[innerChoiceIndex].outcome;
+                    game.outcomeText.index = 0;
+                    //reset button choice back to top 
+                    activityChoicesButtonsData.buttons[0].active = true;
+                    activityChoicesButtonsData.buttons[0].image = activityChoicesButtonsData.buttons[0].images[1];
+                    activityChoicesButtonsData.buttons[1].active = false;
+                    activityChoicesButtonsData.buttons[1].image = activityChoicesButtonsData.buttons[0].images[0];
                 }
-                else {// text not finished animating
-                    //complete animation
-                    amountToCutOffText = 0;
+                else{
+                    if( game.outcomeText.complete) {//text animation complete
+                        game.beginTextAnimation = true;
+                        game.outcomeText.index++;
+                        if (game.outcome.text[game.outcomeText.index].updateStat) {
+                            eval(game.outcome.text[game.outcomeText.index].updateStat);
+                        }
+                        game.outcomeText.complete = false;
+                    }
+                    else {// text not finished animating
+                        //complete animation
+                        amountToCutOffText = 0;
+                    }
                 }
             }
         break;
@@ -148,10 +154,8 @@ function buttons_up(buttonsArray) {
             if ( indexOfNewlySelectedButton < 0){
                 indexOfNewlySelectedButton = buttonsArray.length -1;
             }
-            console.log(buttonsArray[indexOfNewlySelectedButton].active);
             buttonsArray[indexOfNewlySelectedButton].active = true;
             buttonsArray[indexOfNewlySelectedButton].image = button.images[1];
-            console.log(buttonsArray[indexOfNewlySelectedButton].image);
             return indexOfNewlySelectedButton;
         }
     }

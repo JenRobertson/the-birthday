@@ -4,6 +4,7 @@ window.onload = function () {
     canvasElement = document.getElementById("ctx");
     ctx = canvasElement.getContext("2d");
     window.requestAnimationFrame(frame);
+    addStatsMessages();
 }
 
 function frame() {

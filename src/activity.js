@@ -1,6 +1,4 @@
 function drawActivity() {
-    selectOutcome();
-
     drawTown();
     drawActivitySelect();
     drawOutcome();
@@ -18,19 +16,103 @@ var paintingTemplate = {
     x: frameAsset.x + 50,
     y: frameAsset.y + 50
 }
-function selectOutcome() {
-    // todo make this select one properly form your stats
-    game.outcome = game.activity.outcomes[0];
-}
 
 function drawOutcome() {
     drawAsset(paintingTemplate);
     drawAsset(frameAsset);
 }
 
+var beginTextAnimation = true;
+var textAnimateLength;
+
 // https://www.html5canvastutorials.com/tutorials/html5-canvas-wrap-text-tutorial/
 function drawText(){
     ctx.fillStyle = "#FFFFFF";
-    ctx.font="25px Pixeled";
-    ctx.fillText(game.outcome.text,300,800);
+    ctx.font="48px pixel-font-2";
+    wrapText(ctx, animateText(game.outcome.text[game.outcomeText.index].text), 300, 780, 1100, 45);
 }
+
+function animateText(text){
+    if(beginTextAnimation){
+        beginTextAnimation = false;
+        textAnimateLength = text.length;
+    }
+
+    if (textAnimateLength >= 0){
+        textAnimateLength--;
+        return text.slice(0, -textAnimateLength);
+    }
+    return text;
+}
+
+function wrapText(context, text, x, y, maxWidth, lineHeight) {
+    var words = text.split(' ');
+    var line = '';
+    
+    for(var n = 0; n < words.length; n++) {
+        var testLine = line + words[n] + ' ';
+        var metrics = context.measureText(testLine);
+        var testWidth = metrics.width;
+        if (testWidth > maxWidth && n > 0) {
+            context.fillText(line, x, y);
+            line = words[n] + ' ';
+            y += lineHeight;
+        }
+        else {
+            line = testLine;
+        }
+    }
+    return context.fillText(line, x, y);
+}
+
+
+// generate stats messages from stats data
+function addStatsMessages(){
+    locations.forEach(function (location) {
+        location.activities.forEach(function (activity){
+            activity.outcomes.forEach(function (outcome){
+                var gain = {
+                    text: createStatsMessage('gain', outcome.result.gain),
+                    updateStat: createUpdateStatValue('gain', outcome.result.gain)
+                };
+                var lose = {
+                    text: createStatsMessage('lose', outcome.result.lose),
+                    updateStat: createUpdateStatValue('lose', outcome.result.lose)
+                };
+                if (gain.text) outcome.text.push(gain);
+                if (lose.text) outcome.text.push(lose);
+            });
+        });
+    });
+}
+
+function createUpdateStatValue(type, statsObject){
+    var value = '';
+    var symbol = type === 'gain' ? '+' : '-';
+    if (Object.keys(statsObject).length > 0) {
+        for (var key in statsObject){
+            value += `game.stats.${key}.value${symbol}=${statsObject[key]};`;
+        };
+    }
+    return value;
+}
+
+function createStatsMessage(type, statsObject){
+    var message = '';
+    index = 0;
+    if (Object.keys(statsObject).length > 0) {
+        message += 'You ' + type + ' ';
+        for (var key in statsObject){
+            if (index > 0 && index < Object.keys(statsObject).length) {//middle one
+                message += ', '
+            }
+            if (index > 0 && index === Object.keys(statsObject).length - 1) {//last one
+                message += 'and '
+            }
+            message += statsObject[key] + ' ' + key;
+            index++;
+        };
+        message += '.';
+    }
+    return message;
+};

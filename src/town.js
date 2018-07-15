@@ -1,7 +1,7 @@
 function drawTown(){
     drawAssets(townData);
     animateAssets(townData.players);
-    drawTownTitle(1);
+    drawTownTitle(game.day);
     drawScrolls();
     if(game.screen === "town"){
         drawStats(1363, 603);

@@ -6,6 +6,9 @@ document.onkeydown = function(e) {
         case 'activity_select':
             activitySelectKeyboard(e);
             break;
+        case 'activity':
+            activityKeyboard(e);
+            break;
     }
 };
 
@@ -28,7 +31,6 @@ function townKeyboard(e){
 }
 
 function movePlayer(location){
-    console.log(location);
     townData.players[0].destinationX = location.x;
     townData.players[0].destinationY = location.y;
     game.location = location;
@@ -36,7 +38,6 @@ function movePlayer(location){
 
 // activitySelect
 function activitySelectKeyboard(e){
-    console.log(game.activity);
     switch (e.keyCode) {
         case 38://up
             // game.activity = buttons_up(activitySelectData.buttons);
@@ -47,10 +48,41 @@ function activitySelectKeyboard(e){
             game.activity = game.location.activities[buttons_down(activitySelectData.buttons)];
             break;
         case 13://enter
+            // todo make this select one properly form your stats
+            game.outcome = game.activity.outcomes[2];
+            game.outcomeText = {
+                complete: false,
+                index: 0,
+            };
             game.screen = "activity";
             break;
     }
 }
+
+// activity
+function activityKeyboard(e){
+    switch (e.keyCode) {
+        // case 38://up
+        //     movePlayer(locations[buttons_up(townData.buttons)]);
+        //     break;
+        // case 40://down
+        //     movePlayer(locations[buttons_down(townData.buttons)]);
+        //     break;
+        case 13://enter
+            if (game.outcomeText.index + 1 >= game.outcome.text.length){
+                game.day++;
+                game.screen = "town";
+            }
+            else {
+                game.outcomeText.index++;
+                if (game.outcome.text[game.outcomeText.index].updateStat) {
+                    eval(game.outcome.text[game.outcomeText.index].updateStat);
+                }
+            }
+        break;
+    }
+}
+
 
 // generic buttons
 function buttons_down(buttonsArray) {

@@ -23,3 +23,10 @@ canvas{
     font-family: Pixeled;
     src: url(fonts/Pixeled.ttf);
 }
+
+@font-face {
+    font-family: pixel-font-2;
+    src: url(fonts/pixel-font-2.ttf);
+}
+
+

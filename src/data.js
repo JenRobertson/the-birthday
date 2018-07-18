@@ -6,6 +6,7 @@ var locations = [
         activities: [
             {
                 label: "Socialise",
+                image: document.getElementById('story-socialise'),
                 outcomes: [
                     {
                         text: [
@@ -107,6 +108,7 @@ var locations = [
             },
             {
                 label: "Water flowers",
+                image: document.getElementById('story-flowers'),
                 outcomes: [
                     {
                         requirements: "Math.random() < 0.1",
@@ -230,7 +232,7 @@ var locations = [
         activities: [
             {
                 label: "Study recipes",
-                image: document.getElementById('bakery-study'),
+                image: document.getElementById('story-study'),
                 outcomes: [
                     {
                         text: [
@@ -250,6 +252,7 @@ var locations = [
             },
             {
                 label: "Bake crumble",
+                image: document.getElementById('story-bake'),
                 outcomes: [
                     {
                         requirements: "game.stats.wealth.value < 1",
@@ -321,6 +324,7 @@ var locations = [
         activities: [
             {
                 label: "Pick apples",
+                image: document.getElementById('story-apple'),
                 outcomes: [
                     {
                         text: [
@@ -389,6 +393,7 @@ var locations = [
             },
             {
                 label: "Brew cider",
+                image: document.getElementById('story-cider'),
                 outcomes: [
                     {
                         text: [
@@ -477,7 +482,7 @@ var locations = [
         activities: [
             {
                 label: "Have a nap",
-                // image: document.getElementById('bakery-study'),
+                image: document.getElementById('story-nap'),
                 outcomes: [
                     {
                         requirements: "Math.random() < 0.1",
@@ -544,6 +549,124 @@ var locations = [
             },
             {
                 label: "Bounce",
+                image: document.getElementById('story-bounce'),
+                outcomes: [
+                    {
+                        requirements: "game.stats.finesse.value >= 3",
+                        text: [
+                            {
+                                text: "You bounce around Mookie meadows having tons of fun!"
+                            },
+                            {
+                                text: "You try to do a flip and manage to do an amazing 360! It\'s a shame no one was there to see it."
+                            }
+                        ],
+                        result: {
+                            gain: {
+                                finesse: 2,
+                                charm: 1
+                            },
+                            lose: {}
+                        }
+                    },
+                    {
+                        requirements: "true",
+                        text: [
+                            {
+                                text: "You bounce around Mookie meadows having tons of fun."
+                            },
+                            {
+                                text: "You try to do a flip but you aren\'t skilled enough and bang your head on the grass. Silly Mookie!"
+                            },
+                        ],
+                        result: {
+                            gain: {
+                                finesse: 1,
+                            },
+                            lose: {
+                                charm: 1
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        name: 'party',
+        x: 929,
+        y: 221,
+        activities: [
+            {
+                label: "Have a nap",
+                image: document.getElementById('story-nap'),
+                outcomes: [
+                    {
+                        requirements: "Math.random() < 0.1",
+                        text: [
+                            {
+                                text: "You settle down and have a relaxing nap among the grass and flowers. "
+                            },
+                            {
+                                text: "You have a vivid dream about baking a delicious cake!"
+                            }
+                        ],
+                        result: {
+                            gain: {
+                                baking: 1
+                            },
+                            lose: {}
+                        }
+                    },
+                    {
+                        requirements: "Math.random() < 0.5",
+                        text: [
+                            {
+                                text: "You settle down and have a relaxing nap among the grass and flowers. "
+                            },
+                            {
+                                text: "You slowly awake to something snuffling around you. "
+                            },
+                            {
+                                text: "You open your eyes and see a group of guinea pigs surrounding you."
+                            },
+                            {
+                                text: "They thank you for keeping Mookie Meadows' grass so green for them to eat. "
+                            },
+                            {
+                                text: "To pay you back, the ginger one whispers their people\'s secret guinea pig farming techniques into your ear!"
+                            }
+                        ],
+                        result: {
+                            gain: {
+                                farming: 3,
+                                charm: 1
+                            },
+                            lose: {}
+                        }
+                    },
+                    {
+                        requirements: "true",
+                        text: [
+                            {
+                                text: "You settle down and have a relaxing nap among the grass and flowers. "
+                            },
+                            {
+                                text: "You dream about the funniest joke ever. It even still seems funny when you wake up!"
+                            }
+                        ],
+                        result: {
+                            gain: {
+                                charm: 2
+                            },
+                            lose: {}
+                        }
+                    },
+                ]
+            },
+            {
+                label: "Bounce",
+                image: document.getElementById('story-bounce'),
                 outcomes: [
                     {
                         requirements: "game.stats.finesse.value >= 3",
@@ -590,6 +713,7 @@ var locations = [
 
 var game = {
     day: 1,
+    numberOfDays: 6,
     screen: "town",
     location: locations[0],
     activity: null,

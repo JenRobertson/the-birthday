@@ -13,16 +13,16 @@ var frameAsset = {
 
 var paintingTemplate = {
     image: document.getElementById("painting-template"),
-    x: frameAsset.x + 50,
-    y: frameAsset.y + 50
+    x: frameAsset.x + 55,
+    y: frameAsset.y + 55
 }
 
 function drawOutcome() {
     if (game.activity.image){
         drawAsset({
             image: game.activity.image,
-            x: frameAsset.x + 50,
-            y: frameAsset.y + 50
+            x: frameAsset.x + 55,
+            y: frameAsset.y + 55
         });
     }
     else{

@@ -68,7 +68,7 @@ function animateText(text){
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
     var words = text.split(' ');
     var line = '';
-    
+
     for(var n = 0; n < words.length; n++) {
         var testLine = line + words[n] + ' ';
         var metrics = context.measureText(testLine);
@@ -148,7 +148,7 @@ var activityChoicesButtonsData = {
             images: [
                 document.getElementById("blank"),
                 document.getElementById("arrow"),
-            ], 
+            ],
             image: document.getElementById("arrow"),
             x: 250,
             y: 735,
@@ -159,7 +159,7 @@ var activityChoicesButtonsData = {
             images: [
                 document.getElementById("blank"),
                 document.getElementById("arrow"),
-            ], 
+            ],
             image: document.getElementById("blank"),
             x: 250,
             y: 790,

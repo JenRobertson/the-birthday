@@ -60,23 +60,23 @@ function activitySelectKeyboard(e){
                 index: 0,
             };
             game.screen = "activity";
-            game.outcome = selectOutcome();
+            game.outcome = selectOutcome(game.activity.outcomes);
 
             break;
     }
 }
 
-function selectOutcome() {
+function selectOutcome(outcomes) {
     // select outcome based on stats
-    if (!game.activity.outcomes[0].requirements){ // no requirements
-        return game.activity.outcomes[0];
+    if (!outcomes[0].requirements){ // no requirements
+        return outcomes[0];
     }
     else { // requirements exist
-        for(var i = 0; i < game.activity.outcomes.length; i++) {
-            console.log(game.activity.outcomes[i].requirements);
-            console.log(eval(game.activity.outcomes[i].requirements));
-            if (eval(game.activity.outcomes[i].requirements)){
-                return game.activity.outcomes[i];
+        for(var i = 0; i < outcomes.length; i++) {
+            console.log(outcomes[i].requirements);
+            console.log(eval(outcomes[i].requirements));
+            if (eval(outcomes[i].requirements)){
+                return outcomes[i];
             }
         }
     }
@@ -107,9 +107,7 @@ function activityKeyboard(e){
             else { // more text to come
                 if (game.outcome.text[game.outcomeText.index].choice) {//on choice screen
                     console.log('choice! from keyboard ' + innerChoiceIndex);
-                    //HERE
-                    game.outcome = game.outcome.text[game.outcomeText.index].choice[innerChoiceIndex].outcome;
-                    // game.outcome = selectOutcome(game.outcome.text[game.outcomeText.index].choice[innerChoiceIndex].outcomes);
+                    game.outcome = selectOutcome(game.outcome.text[game.outcomeText.index].choice[innerChoiceIndex].outcomes);
                     addStatsMessages(game.outcome);
                     game.outcomeText.index = 0;
                     //reset button choice back to top
@@ -119,7 +117,7 @@ function activityKeyboard(e){
                     activityChoicesButtonsData.buttons[1].image = activityChoicesButtonsData.buttons[0].images[0];
                 }
                 else{
-                    if( game.outcomeText.complete) {//text animation complete
+                    if(game.outcomeText.complete) {//text animation complete
                         game.beginTextAnimation = true;
                         game.outcomeText.index++;
                         if (game.outcome.text[game.outcomeText.index].updateStat) {
@@ -129,6 +127,7 @@ function activityKeyboard(e){
                     }
                     else {// text not finished animating
                         //complete animation
+                        console.log('not complete');
                         amountToCutOffText = 0;
                     }
                 }

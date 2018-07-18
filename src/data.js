@@ -19,43 +19,43 @@ var locations = [
                                 choice: [
                                     {
                                         label: "Make a joke",
-                                        outcome: {
-                                            requirements: "game.stats.charm.value >= 3",
-                                            text:[
-                                                {
-                                                    text: "You tell the funniest joke you know and everyone laugh hysterically. You even did the actions!"
-                                                },
-                                            ],
-                                            result: {
-                                                gain: {
-                                                    charm: 3,
-                                                    finesse: 2,
-                                                },
-                                                lose: {}
-                                            }
-                                        },
-                                        
-
+                                        outcomes: [
+                                            {
+                                                requirements: "game.stats.charm.value >= 3",
+                                                text:[
+                                                    {
+                                                        text: "You tell the funniest joke you know and everyone laugh hysterically. You even did the actions!"
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        charm: 3,
+                                                        finesse: 2,
+                                                    },
+                                                    lose: {}
+                                                }
+                                            },
+                                        ]
                                     },
                                     {
-                                        label: "Do a somersault",
-                                        outcome: {
-                                            text:[
-                                                {
-                                                    text: "You keep the money but can\'t help feeling that you\'ve been naughty."
-                                                },
-                                            ],
-                                            result: {
-                                                gain: {
-                                                    wealth:5
-                                                },
-                                                lose: {
-                                                    finesse: 1,
-                                                    charm: 2
+                                        label: "Make a joke",
+                                        outcomes: [
+                                            {
+                                                requirements: "game.stats.charm.value >= 3",
+                                                text:[
+                                                    {
+                                                        text: "You tell the funniest joke you know and everyone laugh hysterically. You even did the actions!"
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        charm: 3,
+                                                        finesse: 2,
+                                                    },
+                                                    lose: {}
                                                 }
-                                            }
-                                        }
-
+                                            },
+                                        ]
                                     },
                                 ]
                             }
@@ -122,41 +122,43 @@ var locations = [
                                 choice: [
                                     {
                                         label: "Give it into the palace guard in case someone has lost it",
-                                        outcome: {
-                                            text:[
-                                                {
-                                                    text: "The guard thanks you and says you are lovely."
-                                                },
-                                            ],
-                                            result: {
-                                                gain: {
-                                                    charm: 2,
-                                                    finesse: 1,
-                                                },
-                                                lose: {}
+                                        outcomes: [
+                                            {
+                                                text:[
+                                                    {
+                                                        text: "The guard thanks you and says you are lovely."
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        charm: 2,
+                                                        finesse: 1,
+                                                    },
+                                                    lose: {}
+                                                }
                                             }
-                                        }
-
+                                        ]
                                     },
                                     {
                                         label: "Keep it for yourself",
-                                        outcome: {
-                                            text:[
-                                                {
-                                                    text: "You keep the money but can\'t help feeling that you\'ve been naughty."
-                                                },
-                                            ],
-                                            result: {
-                                                gain: {
-                                                    wealth:5
-                                                },
-                                                lose: {
-                                                    finesse: 1,
-                                                    charm: 2
+                                        outcomes: [
+                                            {
+                                                text:[
+                                                    {
+                                                        text: "You keep the money but can\'t help feeling that you\'ve been naughty."
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        wealth:5
+                                                    },
+                                                    lose: {
+                                                        finesse: 1,
+                                                        charm: 2
+                                                    }
                                                 }
                                             }
-                                        }
-
+                                        ]
                                     },
                                 ]
                             }
@@ -272,7 +274,7 @@ var locations = [
                                 baking: 3,
                             },
                             lose: {
-                                wealth: -1
+                                wealth: 1
                             }
                         }
                     },

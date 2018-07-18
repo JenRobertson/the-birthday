@@ -9,6 +9,10 @@ document.onkeydown = function(e) {
         case 'activity':
             activityKeyboard(e);
             break;
+        case 'party':
+            partyKeyboard(e);
+            game.location = locations[4];
+            break;
     }
 };
 
@@ -82,6 +86,21 @@ function selectOutcome(outcomes) {
     }
 }
 
+function goToNextDay(){
+    if (game.day < game.numberOfDays){
+        game.day++;
+        game.screen = "town";
+        game.activity = null;
+        game.outcome = null;
+        game.outcomeText = null;
+    }
+    else {
+        game.day = "party"
+        game.screen = "party"
+    }
+
+}
+
 // activity
 var innerChoiceIndex = 0;
 function activityKeyboard(e){
@@ -98,11 +117,7 @@ function activityKeyboard(e){
             break;
         case 13://enter
             if (game.outcomeText.index + 1 >= game.outcome.text.length && game.outcomeText.complete){ //all the text for outcome is finished
-                game.day++;
-                game.screen = "town";
-                game.activity = null;
-                game.outcome = null;
-                game.outcomeText = null;
+                goToNextDay();
             }
             else { // more text to come
                 if (game.outcome.text[game.outcomeText.index].choice) {//on choice screen
@@ -136,6 +151,33 @@ function activityKeyboard(e){
     }
 }
 
+// party
+function partyKeyboard(e){
+    switch (e.keyCode) {
+        case 38://up
+            game.activity = game.location.activities[buttons_up(partyData.buttons)];
+            console.log(game.activity);
+            break;
+        case 40://down
+            game.activity = game.location.activities[buttons_down(partyData.buttons)];
+            console.log(game.activity);
+            break;
+        case 13://enter
+        console.log('enter');
+            if(!game.activity) {
+                game.location = locations[4];
+                game.activity = game.location.activities[0];
+            }
+            game.beginTextAnimation = true;
+            game.outcomeText = {
+                complete: false,
+                index: 0,
+            };
+            game.screen = "activity";
+            game.outcome = selectOutcome(game.activity.outcomes);
+        break;
+    }
+}
 
 // generic buttons
 function buttons_down(buttonsArray) {

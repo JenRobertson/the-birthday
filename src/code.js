@@ -18,6 +18,9 @@ function frame() {
         case 'activity':
             drawActivity();
             break;
+        case 'party':
+            drawParty();
+            break;
     }
     window.requestAnimationFrame(frame);
 }

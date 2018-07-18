@@ -90,7 +90,13 @@ function addStatsMessagesToOuterOutcomes(){
     locations.forEach(function (location) {
         location.activities.forEach(function (activity){
             activity.outcomes.forEach(function (outcome){
-                addStatsMessages(outcome);
+                if(outcome.result){
+                    addStatsMessages(outcome);
+                }
+                else{
+                    //stops it ending too soon, todo fix this issue lol
+                    outcome.text.push({text: ''})
+                }
             });
         });
     });

@@ -24,7 +24,7 @@ var locations = [
                                                 requirements: "game.stats.charm.value >= 3",
                                                 text:[
                                                     {
-                                                        text: "You tell the funniest joke you know and everyone laugh hysterically. You even did the actions!"
+                                                        text: "You tell the funniest joke you know and everyone laughs hysterically. You even did the actions!"
                                                     },
                                                 ],
                                                 result: {
@@ -35,85 +35,81 @@ var locations = [
                                                     lose: {}
                                                 }
                                             },
+                                            {
+                                                requirements: "true",
+                                                text:[
+                                                    {
+                                                        text: "You tell that joke that you read off a popsicle stick the other day."
+                                                    },
+                                                    {
+                                                        text: "It's not very funny, and you got muddled up half way through. "
+                                                    },
+                                                    {
+                                                        text: "The courtiers nod patronisingly and get on with their conversations."
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {},
+                                                    lose: {
+                                                        charm: 2,
+                                                        finesse: 2,
+                                                    }
+                                                }
+                                            }
                                         ]
                                     },
                                     {
-                                        label: "Make a joke",
+                                        label: "Do a somersault",
                                         outcomes: [
                                             {
-                                                requirements: "game.stats.charm.value >= 3",
+                                                requirements: "game.stats.finesse.value >= 3",
                                                 text:[
                                                     {
-                                                        text: "You tell the funniest joke you know and everyone laugh hysterically. You even did the actions!"
+                                                        text: "You perform a dazzling acrobatic display and wow the courtiers! "
+                                                    },
+                                                    {
+                                                        text: "Baron Burton is so impressed that he tips you a shiny coin."
                                                     },
                                                 ],
                                                 result: {
                                                     gain: {
-                                                        charm: 3,
+                                                        wealth: 1,
                                                         finesse: 2,
                                                     },
                                                     lose: {}
+                                                }
+                                            },
+                                            {
+                                                requirements: "true",
+                                                text:[
+                                                    {
+                                                        text: "You try to do a somersault but you don't have much finesse and accidentally fall right into a pyramid of champaign glasses. "
+                                                    },
+                                                    {
+                                                        text: "You're okay, but you don't wait to see the courtiers reactions."
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {},
+                                                    lose: {
+                                                        finesse: 1,
+                                                        charm: 1
+                                                    }
                                                 }
                                             },
                                         ]
                                     },
                                 ]
                             }
-                        ],
-                        result: {
-                            gain: {},
-                            lose: {
-                                finesse: 1
-                            }
-                        }
-                    },
-                    {
-                        requirements: "game.stats.wealth > 0 && game.stats.baking < 2",
-                        text: [
-                            "You ask the baker if you can make a crumble. ",
-                        "You make a massive mess all over the kitchen and the crumble looks a bit burned on top, but you learned a lot!"
-                        ],
-                        result: {
-                            gain: {
-                                baking: 3,
-                            },
-                            lose: {
-                                wealth: 1
-                            }
-                        }
-                    },
-                    {
-                        requirements: "game.stats.baking > 0 && game.stats.baking > 2",
-                        text: [
-                            {
-                                text: "You ask the baker if you can make a crumble. "
-                            },
-                            {
-                                text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
-                            },
-                            {
-                                text:"He offers to buy the crumble off you.",
-                            },
-                        ],
-                        result: {
-                            gain: {
-                                baking: 2,
-                                finesse: 1,
-                                charm: 1,
-                                wealth: 2
-                            },
-                            lose: {
-                                baking: 1 //remove
-                            }
-                        }
+                        ]
                     },
                 ]
-
             },
             {
                 label: "Water flowers",
                 outcomes: [
                     {
+                        requirements: "Math.random() < 0.1",
                         text: [
                             {
                                 text: "While digging up the weeds you find a leather pouch containing gold coins.",
@@ -163,52 +159,65 @@ var locations = [
                                 ]
                             }
                         ],
-                        result: {
-                            gain: {},
-                            lose: {
-                                finesse: 1
-                            }
-                        }
                     },
                     {
-                        requirements: "game.stats.wealth > 0 && game.stats.baking < 2",
-                        text: [
-                            "You ask the baker if you can make a crumble. ",
-                        "You make a massive mess all over the kitchen and the crumble looks a bit burned on top, but you learned a lot!"
-                        ],
-                        result: {
-                            gain: {
-                                baking: 3,
-                            },
-                            lose: {
-                                wealth: 1
-                            }
-                        }
-                    },
-                    {
-                        requirements: "game.stats.baking > 0 && game.stats.baking > 2",
+                        requirements: "true",
                         text: [
                             {
-                                text: "You ask the baker if you can make a crumble. "
+                                text: "You have a relaxing day tending to the many flowers around the castle.",
                             },
                             {
-                                text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
+                                text: "While in the garden, a magic frog appears from the pond and offers to grant you a wish!",
                             },
                             {
-                                text:"He offers to buy the crumble off you.",
-                            },
-                        ],
-                        result: {
-                            gain: {
-                                baking: 2,
-                                finesse: 1,
-                                charm: 1,
-                                wealth: 2
-                            },
-                            lose: {
-                                baking: 1 //remove
+                                choice: [
+                                    {
+                                        label: "Wish to be charming and witty and great at banter.",
+                                        outcomes: [
+                                            {
+                                                text:[
+                                                    {
+                                                        text: "He croaks and grants you your wish!"
+                                                    },
+                                                    {
+                                                        text: "You feel funny anecdotes and charming ice breakers enter your mind..."
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        charm: 4,
+                                                        farming: 2,
+                                                    },
+                                                    lose: {}
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: "Wish to be a skillful musician.",
+                                        outcomes: [
+                                            {
+                                                text:[
+                                                    {
+                                                        text: "The frog croaks and you begin to sing and tap a beat with your spade."
+                                                    },
+                                                    {
+                                                        text: "You feel melodic ideas fill your mind."
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        finesse: 4,
+                                                        farming: 2
+                                                    },
+                                                    lose: {}
+                                                }
+                                            }
+                                        ]
+                                    },
+                                ]
                             }
-                        }
+                        ],
                     },
                 ]
             }
@@ -311,71 +320,144 @@ var locations = [
         y: 640,
         activities: [
             {
-                label: "Study recipes",
+                label: "Pick apples",
                 outcomes: [
                     {
-                        requirements: "game.stats.wealth < 1",
                         text: [
-                            "You ask the baker if you can make a crumble.",
-                            "You don\'t have enough money to buy any flower or apples."
+                            {
+                                text: "You spend the day picking some delicious looking apples. You get a little hungry and the apples look so tasty...",
+                            },
+                            {
+                                choice: [
+                                    {
+                                        label: "Eat an apple",
+                                        outcomes: [
+                                            {
+                                                text:[
+                                                    {
+                                                        text: "As you bite into the apple the farmer sees you!"
+                                                    },
+                                                    {
+                                                        text: "\"Naughty Mookie, eating all the apples!\" He charges you for the apple."
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        farming: 2
+                                                    },
+                                                    lose: {
+                                                        wealth: 2,
+                                                        charm: 1,
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: "Take the apples back to the farmer",
+                                        outcomes: [
+                                            {
+                                                text:[
+                                                    {
+                                                        text: "The farmer is so pleased with the great job you did picking apples that he tells you his secret for finding the tastiest ones! "
+                                                    },
+                                                    {
+                                                        text: "He pays you for your work."
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        wealth: 2,
+                                                        farming: 4
+                                                    },
+                                                    lose: {}
+                                                }
+                                            }
+                                        ]
+                                    },
+                                ]
+                            }
                         ],
                         result: {
                             gain: {},
                             lose: {
                                 finesse: 1
-                            }
-                        }
-                    },
-                    {
-                        requirements: "game.stats.wealth > 0 && game.stats.baking < 2",
-                        text: [
-                            "You ask the baker if you can make a crumble. ",
-                        "You make a massive mess all over the kitchen and the crumble looks a bit burned on top, but you learned a lot!"
-                        ],
-                        result: {
-                            gain: {
-                                baking: 3,
-                            },
-                            lose: {
-                                wealth: 1
-                            }
-                        }
-                    },
-                    {
-                        requirements: "game.stats.baking > 0 && game.stats.baking > 2",
-                        text: [
-                            {
-                                text: "You ask the baker if you can make a crumble. "
-                            },
-                            {
-                                text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
-                            },
-                            {
-                                text:"He offers to buy the crumble off you.",
-                            },
-                        ],
-                        result: {
-                            gain: {
-                                baking: 2,
-                                finesse: 1,
-                                charm: 1,
-                                wealth: 2
-                            },
-                            lose: {
-                                baking: 1 //remove
                             }
                         }
                     },
                 ]
             },
             {
-                label: "Bake crumble",
+                label: "Brew cider",
                 outcomes: [
                     {
-                        requirements: "game.stats.wealth < 1",
                         text: [
-                            "You ask the baker if you can make a crumble.",
-                            "You don\'t have enough money to buy any flower or apples."
+                            {
+                                text: "You have a go at making some cider using apples from the Great Kingdom\'s orchard.",
+                            },
+                            {
+                                text: "The brewing equipment bubbles and fizzes, and out comes a stream of orange looking cider.",
+                            },
+                            {
+                                choice: [
+                                    {
+                                        label: "Drink the cider",
+                                        outcomes: [
+                                            {
+                                                text:[
+                                                    {
+                                                        text: "You take a big swig of the cider, only to discover that it is incredibly alcoholic...!"
+                                                    },
+                                                    {
+                                                        text: "..........."
+                                                    },
+                                                    {
+                                                        text: "You wake up in the brewing shed."
+                                                    },
+                                                    {
+                                                        text: "There\'s equipment and cider all over the floor and you are covered in crumble. This will cost a lot to fix!"
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        farming: 1,
+                                                        baking: 1
+                                                    },
+                                                    lose: {
+                                                        wealth: 2,
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: "Sell the cider",
+                                        outcomes: [
+                                            {
+                                                text:[
+                                                    {
+                                                        text: "You ask if the apple farmer if he would like to buy your cider."
+                                                    },
+                                                    {
+                                                        text: "He takes a sniff of it and makes a face. \"Yo\'ve put in too much alcohol Mookie!\""
+                                                    },
+                                                    {
+                                                        text: "He doesn\'t buy any but you have a good laugh about it! "
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        baking: 2,
+                                                        farming: 1,
+                                                        charm: 1
+                                                    },
+                                                    lose: {}
+                                                }
+                                            }
+                                        ]
+                                    },
+                                ]
+                            }
                         ],
                         result: {
                             gain: {},
@@ -384,48 +466,8 @@ var locations = [
                             }
                         }
                     },
-                    {
-                        requirements: "game.stats.wealth > 0 && game.stats.baking < 2",
-                        text: [
-                            "You ask the baker if you can make a crumble. ",
-                        "You make a massive mess all over the kitchen and the crumble looks a bit burned on top, but you learned a lot!"
-                        ],
-                        result: {
-                            gain: {
-                                baking: 3,
-                            },
-                            lose: {
-                                wealth: 1
-                            }
-                        }
-                    },
-                    {
-                        requirements: "game.stats.baking > 0 && game.stats.baking > 2",
-                        text: [
-                            {
-                                text: "You ask the baker if you can make a crumble. "
-                            },
-                            {
-                                text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
-                            },
-                            {
-                                text:"He offers to buy the crumble off you.",
-                            },
-                        ],
-                        result: {
-                            gain: {
-                                baking: 2,
-                                finesse: 1,
-                                charm: 1,
-                                wealth: 2
-                            },
-                            lose: {
-                                baking: 1 //remove
-                            }
-                        }
-                    },
                 ]
-            }
+            },
         ]
     },
     {
@@ -435,117 +477,111 @@ var locations = [
         activities: [
             {
                 label: "Have a nap",
+                // image: document.getElementById('bakery-study'),
                 outcomes: [
                     {
+                        requirements: "Math.random() < 0.1",
                         text: [
-                            "You settle down and have a relaxing nap among the grass and flowers.",
-                            "You have a vivid dream about baking a delicious cake!"
-                        ],
-                        result: {
-                            gain: {},
-                            lose: {
-                                finesse: 1
+                            {
+                                text: "You settle down and have a relaxing nap among the grass and flowers. "
+                            },
+                            {
+                                text: "You have a vivid dream about baking a delicious cake!"
                             }
-                        }
-                    },
-                    {
-                        text: [
-                            "You settle down and have a relaxing nap among the grass and flowers.",
-                            "You dream about the funniest joke ever. It even still seems funny when you wake up!"
                         ],
                         result: {
                             gain: {
-                                baking: 3,
+                                baking: 1
                             },
-                            lose: {
-                                wealth: 1
-                            }
+                            lose: {}
                         }
                     },
                     {
-                        requirements: "game.stats.baking > 0 && game.stats.baking > 2",
+                        requirements: "Math.random() < 0.5",
                         text: [
                             {
-                                text: "You ask the baker if you can make a crumble. "
+                                text: "You settle down and have a relaxing nap among the grass and flowers. "
                             },
                             {
-                                text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
+                                text: "You slowly awake to something snuffling around you. "
                             },
                             {
-                                text:"He offers to buy the crumble off you.",
+                                text: "You open your eyes and see a group of guinea pigs surrounding you."
                             },
+                            {
+                                text: "They thank you for keeping Mookie Meadows' grass so green for them to eat. "
+                            },
+                            {
+                                text: "To pay you back, the ginger one whispers their people\'s secret guinea pig farming techniques into your ear!"
+                            }
                         ],
                         result: {
                             gain: {
-                                baking: 2,
-                                finesse: 1,
-                                charm: 1,
-                                wealth: 2
+                                farming: 3,
+                                charm: 1
                             },
-                            lose: {
-                                baking: 1 //remove
+                            lose: {}
+                        }
+                    },
+                    {
+                        requirements: "true",
+                        text: [
+                            {
+                                text: "You settle down and have a relaxing nap among the grass and flowers. "
+                            },
+                            {
+                                text: "You dream about the funniest joke ever. It even still seems funny when you wake up!"
                             }
+                        ],
+                        result: {
+                            gain: {
+                                charm: 2
+                            },
+                            lose: {}
                         }
                     },
                 ]
-
             },
             {
-                label: "Bake crumble",
+                label: "Bounce",
                 outcomes: [
                     {
-                        requirements: "game.stats.wealth < 1",
+                        requirements: "game.stats.finesse.value >= 3",
                         text: [
-                            "You ask the baker if you can make a crumble.",
-                            "You don\'t have enough money to buy any flower or apples."
-                        ],
-                        result: {
-                            gain: {},
-                            lose: {
-                                finesse: 1
+                            {
+                                text: "You bounce around Mookie meadows having tons of fun!"
+                            },
+                            {
+                                text: "You try to do a flip and manage to do an amazing 360! It\'s a shame no one was there to see it."
                             }
-                        }
-                    },
-                    {
-                        requirements: "game.stats.wealth > 0 && game.stats.baking < 2",
-                        text: [
-                            "You ask the baker if you can make a crumble. ",
-                        "You make a massive mess all over the kitchen and the crumble looks a bit burned on top, but you learned a lot!"
                         ],
                         result: {
                             gain: {
-                                baking: 3,
+                                finesse: 2,
+                                charm: 1
                             },
-                            lose: {
-                                wealth: 1
-                            }
+                            lose: {}
                         }
                     },
                     {
-                        requirements: "game.stats.baking > 0 && game.stats.baking > 2",
+                        requirements: "true",
                         text: [
                             {
-                                text: "You ask the baker if you can make a crumble. "
+                                text: "You bounce around Mookie meadows having tons of fun."
                             },
                             {
-                                text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
-                            },
-                            {
-                                text:"He offers to buy the crumble off you.",
+                                text: "You try to do a flip but you aren\'t skilled enough and bang your head on the grass. Silly Mookie!"
                             },
                         ],
                         result: {
                             gain: {
-                                baking: 2,
                                 finesse: 1,
-                                charm: 1,
-                                wealth: 2
                             },
                             lose: {
-                                baking: 1 //remove
+                                charm: 1
                             }
                         }
-                    },
+                    }
                 ]
             }
         ]

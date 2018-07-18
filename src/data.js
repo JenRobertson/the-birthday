@@ -8,10 +8,57 @@ var locations = [
                 label: "Socialise",
                 outcomes: [
                     {
-                        requirements: "game.stats.wealth < 1",
                         text: [
-                            "You ask the baker if you can make a crumble.", 
-                            "You don\'t have enough money to buy any flower or apples."
+                            {
+                                text: "You put on your best hat and go to make conversation with the nobles at the castle.",
+                            },
+                            {
+                                text: "You stand and nod for a while, when suddenly everyone looks at you...",
+                            },
+                            {
+                                choice: [
+                                    {
+                                        label: "Make a joke",
+                                        outcome: {
+                                            requirements: "game.stats.charm.value >= 3",
+                                            text:[
+                                                {
+                                                    text: "You tell the funniest joke you know and everyone laugh hysterically. You even did the actions!"
+                                                },
+                                            ],
+                                            result: {
+                                                gain: {
+                                                    charm: 3,
+                                                    finesse: 2,
+                                                },
+                                                lose: {}
+                                            }
+                                        },
+                                        
+
+                                    },
+                                    {
+                                        label: "Do a somersault",
+                                        outcome: {
+                                            text:[
+                                                {
+                                                    text: "You keep the money but can\'t help feeling that you\'ve been naughty."
+                                                },
+                                            ],
+                                            result: {
+                                                gain: {
+                                                    wealth:5
+                                                },
+                                                lose: {
+                                                    finesse: 1,
+                                                    charm: 2
+                                                }
+                                            }
+                                        }
+
+                                    },
+                                ]
+                            }
                         ],
                         result: {
                             gain: {},
@@ -23,7 +70,7 @@ var locations = [
                     {
                         requirements: "game.stats.wealth > 0 && game.stats.baking < 2",
                         text: [
-                            "You ask the baker if you can make a crumble. ", 
+                            "You ask the baker if you can make a crumble. ",
                         "You make a massive mess all over the kitchen and the crumble looks a bit burned on top, but you learned a lot!"
                         ],
                         result: {
@@ -40,7 +87,7 @@ var locations = [
                         text: [
                             {
                                 text: "You ask the baker if you can make a crumble. "
-                            }, 
+                            },
                             {
                                 text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
                             },
@@ -67,10 +114,9 @@ var locations = [
                 label: "Water flowers",
                 outcomes: [
                     {
-                        requirements: "true",
                         text: [
-                            { 
-                                text: "While digging up the weeds you find a leather pouch containing gold coins.", 
+                            {
+                                text: "While digging up the weeds you find a leather pouch containing gold coins.",
                             },
                             {
                                 choice: [
@@ -90,7 +136,7 @@ var locations = [
                                                 lose: {}
                                             }
                                         }
-                                    
+
                                     },
                                     {
                                         label: "Keep it for yourself",
@@ -110,7 +156,7 @@ var locations = [
                                                 }
                                             }
                                         }
-                                    
+
                                     },
                                 ]
                             }
@@ -125,7 +171,7 @@ var locations = [
                     {
                         requirements: "game.stats.wealth > 0 && game.stats.baking < 2",
                         text: [
-                            "You ask the baker if you can make a crumble. ", 
+                            "You ask the baker if you can make a crumble. ",
                         "You make a massive mess all over the kitchen and the crumble looks a bit burned on top, but you learned a lot!"
                         ],
                         result: {
@@ -142,7 +188,7 @@ var locations = [
                         text: [
                             {
                                 text: "You ask the baker if you can make a crumble. "
-                            }, 
+                            },
                             {
                                 text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
                             },
@@ -176,7 +222,6 @@ var locations = [
                 image: document.getElementById('bakery-study'),
                 outcomes: [
                     {
-                        requirements: "true",
                         text: [
                             {
                                 text: "You surround yourself with old sticky cooking books and try to understand the recipes."
@@ -196,13 +241,13 @@ var locations = [
                 label: "Bake crumble",
                 outcomes: [
                     {
-                        requirements: "game.stats.wealth < 1",
+                        requirements: "game.stats.wealth.value < 1",
                         text: [
                             {
                                 text: "You ask the baker if you can make a crumble."
                             },
                             {
-                                text: "You don\'t have enough money to buy any flower or apples."
+                                text: "You don\'t have enough money to buy any flour or apples."
                             }
                         ],
                         result: {
@@ -213,7 +258,7 @@ var locations = [
                         }
                     },
                     {
-                        requirements: "game.stats.wealth > 0 && game.stats.baking < 2",
+                        requirements: "game.stats.baking.value < 4",
                         text: [
                             {
                                 text: "You ask the baker if you can make a crumble."
@@ -232,11 +277,11 @@ var locations = [
                         }
                     },
                     {
-                        requirements: "game.stats.baking > 0 && game.stats.baking > 2",
+                        requirements: "game.stats.baking.value >= 4",
                         text: [
                             {
                                 text: "You ask the baker if you can make a crumble. "
-                            }, 
+                            },
                             {
                                 text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
                             },
@@ -269,7 +314,7 @@ var locations = [
                     {
                         requirements: "game.stats.wealth < 1",
                         text: [
-                            "You ask the baker if you can make a crumble.", 
+                            "You ask the baker if you can make a crumble.",
                             "You don\'t have enough money to buy any flower or apples."
                         ],
                         result: {
@@ -282,7 +327,7 @@ var locations = [
                     {
                         requirements: "game.stats.wealth > 0 && game.stats.baking < 2",
                         text: [
-                            "You ask the baker if you can make a crumble. ", 
+                            "You ask the baker if you can make a crumble. ",
                         "You make a massive mess all over the kitchen and the crumble looks a bit burned on top, but you learned a lot!"
                         ],
                         result: {
@@ -299,7 +344,7 @@ var locations = [
                         text: [
                             {
                                 text: "You ask the baker if you can make a crumble. "
-                            }, 
+                            },
                             {
                                 text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
                             },
@@ -327,7 +372,7 @@ var locations = [
                     {
                         requirements: "game.stats.wealth < 1",
                         text: [
-                            "You ask the baker if you can make a crumble.", 
+                            "You ask the baker if you can make a crumble.",
                             "You don\'t have enough money to buy any flower or apples."
                         ],
                         result: {
@@ -340,7 +385,7 @@ var locations = [
                     {
                         requirements: "game.stats.wealth > 0 && game.stats.baking < 2",
                         text: [
-                            "You ask the baker if you can make a crumble. ", 
+                            "You ask the baker if you can make a crumble. ",
                         "You make a massive mess all over the kitchen and the crumble looks a bit burned on top, but you learned a lot!"
                         ],
                         result: {
@@ -357,7 +402,7 @@ var locations = [
                         text: [
                             {
                                 text: "You ask the baker if you can make a crumble. "
-                            }, 
+                            },
                             {
                                 text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
                             },
@@ -387,13 +432,12 @@ var locations = [
         y: 221,
         activities: [
             {
-                label: "Study recipes",
+                label: "Have a nap",
                 outcomes: [
                     {
-                        requirements: "game.stats.wealth < 1",
                         text: [
-                            "You ask the baker if you can make a crumble.", 
-                            "You don\'t have enough money to buy any flower or apples."
+                            "You settle down and have a relaxing nap among the grass and flowers.",
+                            "You have a vivid dream about baking a delicious cake!"
                         ],
                         result: {
                             gain: {},
@@ -403,10 +447,9 @@ var locations = [
                         }
                     },
                     {
-                        requirements: "game.stats.wealth > 0 && game.stats.baking < 2",
                         text: [
-                            "You ask the baker if you can make a crumble. ", 
-                        "You make a massive mess all over the kitchen and the crumble looks a bit burned on top, but you learned a lot!"
+                            "You settle down and have a relaxing nap among the grass and flowers.",
+                            "You dream about the funniest joke ever. It even still seems funny when you wake up!"
                         ],
                         result: {
                             gain: {
@@ -422,7 +465,7 @@ var locations = [
                         text: [
                             {
                                 text: "You ask the baker if you can make a crumble. "
-                            }, 
+                            },
                             {
                                 text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
                             },
@@ -443,7 +486,7 @@ var locations = [
                         }
                     },
                 ]
-                
+
             },
             {
                 label: "Bake crumble",
@@ -451,7 +494,7 @@ var locations = [
                     {
                         requirements: "game.stats.wealth < 1",
                         text: [
-                            "You ask the baker if you can make a crumble.", 
+                            "You ask the baker if you can make a crumble.",
                             "You don\'t have enough money to buy any flower or apples."
                         ],
                         result: {
@@ -464,7 +507,7 @@ var locations = [
                     {
                         requirements: "game.stats.wealth > 0 && game.stats.baking < 2",
                         text: [
-                            "You ask the baker if you can make a crumble. ", 
+                            "You ask the baker if you can make a crumble. ",
                         "You make a massive mess all over the kitchen and the crumble looks a bit burned on top, but you learned a lot!"
                         ],
                         result: {
@@ -481,7 +524,7 @@ var locations = [
                         text: [
                             {
                                 text: "You ask the baker if you can make a crumble. "
-                            }, 
+                            },
                             {
                                 text:"The baker is wowed by your skills and amazing appley smells waft from the oven.",
                             },
@@ -541,4 +584,5 @@ var game = {
         }
     }
 }
+//game.stats.wealth.value
 

@@ -54,16 +54,31 @@ function activitySelectKeyboard(e){
             console.log(game.activity);
             break;
         case 13://enter
-            // todo make this select one properly form your stats
-            
             game.beginTextAnimation = true;
-            game.outcome = game.activity.outcomes[0];
             game.outcomeText = {
                 complete: false,
                 index: 0,
             };
             game.screen = "activity";
+            game.outcome = selectOutcome();
+
             break;
+    }
+}
+
+function selectOutcome() {
+    // select outcome based on stats
+    if (!game.activity.outcomes[0].requirements){ // no requirements
+        return game.activity.outcomes[0];
+    }
+    else { // requirements exist
+        for(var i = 0; i < game.activity.outcomes.length; i++) {
+            console.log(game.activity.outcomes[i].requirements);
+            console.log(eval(game.activity.outcomes[i].requirements));
+            if (eval(game.activity.outcomes[i].requirements)){
+                return game.activity.outcomes[i];
+            }
+        }
     }
 }
 
@@ -73,18 +88,16 @@ function activityKeyboard(e){
     switch (e.keyCode) {
         case 38://up
             if (game.outcome.text[game.outcomeText.index].choice){
-                // console.log(game.outcome.text[game.outcomeText.index].choice[0].label);
                 innerChoiceIndex = buttons_up(activityChoicesButtonsData.buttons);
             }
             break;
         case 40://down
             if (game.outcome.text[game.outcomeText.index].choice){
-                // console.log(game.outcome.text[game.outcomeText.index].choice[0].label);
                 innerChoiceIndex = buttons_down(activityChoicesButtonsData.buttons);
             }
             break;
         case 13://enter
-            if (game.outcomeText.index + 1 >= game.outcome.text.length){ //all the text for outcome is finished
+            if (game.outcomeText.index + 1 >= game.outcome.text.length && game.outcomeText.complete){ //all the text for outcome is finished
                 game.day++;
                 game.screen = "town";
                 game.activity = null;
@@ -94,10 +107,12 @@ function activityKeyboard(e){
             else { // more text to come
                 if (game.outcome.text[game.outcomeText.index].choice) {//on choice screen
                     console.log('choice! from keyboard ' + innerChoiceIndex);
+                    //HERE
                     game.outcome = game.outcome.text[game.outcomeText.index].choice[innerChoiceIndex].outcome;
+                    // game.outcome = selectOutcome(game.outcome.text[game.outcomeText.index].choice[innerChoiceIndex].outcomes);
                     addStatsMessages(game.outcome);
                     game.outcomeText.index = 0;
-                    //reset button choice back to top 
+                    //reset button choice back to top
                     activityChoicesButtonsData.buttons[0].active = true;
                     activityChoicesButtonsData.buttons[0].image = activityChoicesButtonsData.buttons[0].images[1];
                     activityChoicesButtonsData.buttons[1].active = false;
@@ -130,7 +145,7 @@ function buttons_down(buttonsArray) {
         if (button.active) {
             button.active = false;
             button.image = button.images[0];
-            
+
             var indexOfNewlySelectedButton = i + 1;
             if ( indexOfNewlySelectedButton >= buttonsArray.length){
                 indexOfNewlySelectedButton = 0;
@@ -145,12 +160,12 @@ function buttons_down(buttonsArray) {
 function buttons_up(buttonsArray) {
     console.log('buttons up');
     for (let i = 0; i < buttonsArray.length; i++){
-        
+
         button = buttonsArray[i];
         if (button.active) {
             button.active = false;
             button.image = button.images[0];
-            
+
             var indexOfNewlySelectedButton = i - 1;
             if ( indexOfNewlySelectedButton < 0){
                 indexOfNewlySelectedButton = buttonsArray.length -1;

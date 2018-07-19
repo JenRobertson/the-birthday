@@ -688,10 +688,91 @@ var locations = [
                 image: document.getElementById('story-bounce'),
                 outcomes: [
                     {
+                        requirements: "game.stats.wealth.value >= 3 && game.stats.finesse.value >= 3",
+                        text: [
+                            {
+                                text: "You decide to help by entertaining the guests at the party by playing some fun music."
+                            },
+                            {
+                                text: "Your instrument of choice is the tuba!"
+                            },
+                            {
+                                text: "You go to the instrument store and use your many gold coins to buy the shiniest and best tuba they have."
+                            },
+                            {
+                                text: "With your considerable finesse, you manage to play the tuba beautifully. The guests are wowed and everyone begins dancing to your jaunty tune."
+                            },
+                            {
+                                text: "This helps the party immensely!"
+                            },
+                        ],
+                    },
+                    {
+                        requirements: "game.stats.finesse.value >= 3",
+                        text: [
+                            {
+                                text: "You decide to help by entertaining the guests at the party by playing some fun music."
+                            },
+                            {
+                                text: "Your instrument of choice is the tuba!"
+                            },
+                            {
+                                text: "You go to the instrument store but you don\'t have enough money to buy the tuba you wanted. All you can get is a triangle."
+                            },
+                            {
+                                text: "With your considerable finesse, you manage to play a beautiful rhythm on the triangle. No one can really dance to the triangle, but everyone enjoys the music!"
+                            },
+                            {
+                                text: "This helps the party!"
+                            },
+                        ],
+                    },
+                    {
+                        requirements: "game.stats.wealth.value >= 3",
+                        text: [
+                            {
+                                text: "You decide to help by entertaining the guests at the party by playing some fun music."
+                            },
+                            {
+                                text: "Your instrument of choice is the tuba!"
+                            },
+                            {
+                                text: "You go to the instrument store and use your many gold coins to buy the shiniest and best tuba they have."
+                            },
+                            {
+                                text: "You don\'t have much finesse, but you try your best to play the tuba anyway."
+                            },
+                            {
+                                text: "The amazing quality of the instrument slightly makes up for your dodgey playing. It\'s quite a funny moment and the party guests have a chuckle."
+                            },
+                            {
+                                text: "This helps the party!"
+                            },
+                        ],
+                    },
+                    {
                         requirements: "true",
                         text: [
                             {
-                                text: "musician"
+                                text: "You decide to help by entertaining the guests at the party by playing some fun music."
+                            },
+                            {
+                                text: "Your instrument of choice is the tuba!"
+                            },
+                            {
+                                text: "You go to the instrument store but you don\'t have enough money to buy the tuba you wanted. All you can get is a triangle."
+                            },
+                            {
+                                text: "You don\'t have much finesse, and everyone awkwardly watches as you try and play the triangle."
+                            },
+                            {
+                                text: "ding... ding.... dingding... ding."
+                            },
+                            {
+                                text: "You tried your best but your music wasn\'t great and no one could really dance to it."
+                            },
+                            {
+                                text: "This doesn\'t really help the party, but everyone thanks you for trying."
                             }
                         ],
                     },
@@ -702,19 +783,114 @@ var locations = [
                 image: document.getElementById('story-bounce'),
                 outcomes: [
                     {
+                        requirements: "game.stats.baking.value >= 3 && game.stats.charm.value >= 3",
+                        text: [
+                            {
+                                text: "You decide to help out with the party by being the host!"
+                            },
+                            {
+                                text: "You spend the evening handing out food and nibbles to dignitaries."
+                            },
+                            {
+                                text: "With your impressive baking knowledge you\'re able to recommend different dishes to the guests and wow them with detailed background information."
+                            },
+                            {
+                                text: "It\'s time to make a speech!"
+                            },
+                            {
+                                text: "You tap into your iridescent charm and perform an eloquent, touching and humorous address. You crack a joke to finish and everyone falls around laughing."
+                            },
+                            {
+                                text: "Prince Gareth wipes a tear from his eye. \"Thanks Mookie, that was aces!\""
+                            },
+                            {
+                                text: "This helps the party immensely!"
+                            },
+                        ],
+                    },
+                    {
+                        requirements: "game.stats.baking.value >= 3",
+                        text: [
+                            {
+                                text: "You decide to help out with the party by being the host!"
+                            },
+                            {
+                                text: "You spend the evening handing out food and nibbles to dignitaries."
+                            },
+                            {
+                                text: "With your impressive baking knowledge you\'re able to recommend different dishes to the guests and wow them with detailed background information."
+                            },
+                            {
+                                text: "It\'s time to make a speech!"
+                            },
+                            {
+                                text: "You tap into your iridescent charm and perform an eloquent, touching and humorous address. You crack a joke to finish and everyone falls around laughing."
+                            },
+                            {
+                                text: "Prince Gareth wipes a tear from his eye. \"Thanks Mookie, that was aces!\""
+                            },
+                            {
+                                text: "This helps the party!"
+                            },
+                        ],
+                    },
+                    {
+                        requirements: "game.stats.charm.value >= 3",
+                        text: [
+                            {
+                                text: "You decide to help out with the party by being the host!"
+                            },
+                            {
+                                text: "You spend the evening handing out food and nibbles to dignitaries."
+                            },
+                            {
+                                text: "You don\'t know much about baking, and so you just hand out random food to everyone and hope they like it."
+                            },
+                            {
+                                text: "Baron Burton asks about one of the dishes but you have no idea what it even is."
+                            },
+                            {
+                                text: "It\'s time to make a speech! You are a bit nervous but you still manage to thank everyone for coming and tell Prince Gareth a happy birthday. "
+                            },
+                            {
+                                text: "You try to finish with a joke, but you got the names in it mixed up and so the joke made so sense."
+                            },
+                            {
+                                text: "Prince Gareth chuckles and shakes his head and says, \"Thanks Mookie, you\'re cool!\""
+                            },
+                            {
+                                text: "This helps the party!"
+                            },
+                        ],
+                    },
+                    {
                         requirements: "true",
                         text: [
                             {
-                                text: "Host"
-                            }
-                        ],
-                        result: {
-                            gain: {
-                                finesse: 2,
-                                charm: 1
+                                text: "You decide to help out with the party by being the host!"
                             },
-                            lose: {}
-                        }
+                            {
+                                text: "You spend the evening handing out food and nibbles to dignitaries."
+                            },
+                            {
+                                text: "You don\'t know much about baking, and so you just hand out random food to everyone and hope they like it."
+                            },
+                            {
+                                text: "Baron Burton asks about one of the dishes but you have no idea what it even is."
+                            },
+                            {
+                                text: "It\'s time to make a speech! You are a bit nervous but you still manage to thank everyone for coming and tell Prince Gareth a happy birthday. "
+                            },
+                            {
+                                text: "You try to finish with a joke, but you got the names in it mixed up and so the joke made so sense."
+                            },
+                            {
+                                text: "Prince Gareth chuckles and shakes his head and says, \"Thanks Mookie, you\'re cool!\""
+                            },
+                            {
+                                text: "Maybe being a host wasn\'t the best job for you, but everyone appreciates the effort."
+                            },
+                        ],
                     },
                 ]
             },
@@ -723,13 +899,77 @@ var locations = [
                 image: document.getElementById('story-bounce'),
                 outcomes: [
                     {
-                        requirements: "true",
+                        requirements: "game.stats.farming.value >=3 && game.stats.charm.value >=3",
                         text: [
                             {
-                                text: "Drunk!"
+                                text: "You decide to brew some cider for party guests to drink!"
                             },
                             {
-                                text: "Drunk!2"
+                                text: "You skillfully select the best apples from the orchard and ferment them with some delicious spices. "
+                            },
+                            {
+                                text: "You roll your best barrel to the party and ask if anyone would like to try some."
+                            },
+                            {
+                                text: "Your charm wins them over, and they discover that your cider is delicious!"
+                            },
+                            {
+                                text: "All the guests have a glass and have a jolly good time."
+                            },
+                            {
+                                text: "This helps the party immensely!"
+                            },
+                        ],
+                    },
+                    {
+                        requirements: "game.stats.farming.value >=3",
+                        text: [
+                            {
+                                text: "You decide to brew some cider for party guests to drink!"
+                            },
+                            {
+                                text: "You skillfully select the best apples from the orchard and ferment them with some delicious spices."
+                            },
+                            {
+                                text: "You roll your best barrel to the party and ask if anyone would like to try some."
+                            },
+                            {
+                                text: "The dignitaries are a bit worried about trying your homemade cider, but you convince some of the town\'s people to try it"
+                            },
+                            {
+                                text: "It\'s delicious, and those who were brave enough to drink it have a jolly time!"
+                            },
+                            {
+                                text: "This helps the party!"
+                            },
+                        ],
+                    },
+                    {
+                        requirements: "game.stats.charm.value >=3",
+                        text: [
+                            {
+                                text: "You decide to brew some cider for party guests to drink!"
+                            },
+                            {
+                                text: "You find a box of old apples and try to ferment them into some cider. You throw in some flavourings willy-nilly."
+                            },
+                            {
+                                text: "You roll your best barrel to the party and ask if anyone would like to try some."
+                            },
+                            {
+                                text: "The guests weren\'t sure at first, but your charm wins them over."
+                            },
+                            {
+                                text: "They all gulp your cider down."
+                            },
+                            {
+                                text: "Unfortunately, it seems the cider was far too strong and everyone gets messy drunk."
+                            },
+                            {
+                                text: "It\'s not ideal, but at least the dignitaries are letting loose!"
+                            },
+                            {
+                                text: "This helps the party!"
                             },
                         ],
                     },
@@ -737,16 +977,27 @@ var locations = [
                         requirements: "true",
                         text: [
                             {
-                                text: "Drunk!"
+                                text: "You decide to brew some cider for party guests to drink!"
                             },
+                            {
+                                text: "You find a box of old apples and try to ferment them into some cider. You throw in some flavourings willy-nilly."
+                            },
+                            {
+                                text: "You roll your best barrel to the party and ask if anyone would like to try some."
+                            },
+                            {
+                                text: "The dignitaries are a bit worried about trying your homemade cider, but you convince some of the town\'s people to try it"
+                            },
+                            {
+                                text: "The tavern owner takes one sip and spits it on the floor. \"Sorry Mookie, we can\'t drink this!!\""
+                            },
+                            {
+                                text: "Unfortunately, it seems the cider was far too strong and did not taste good at all."
+                            },
+                            {
+                                text: "This doesn\'t really help the party, but everyone thanks you for trying."
+                            }
                         ],
-                        result: {
-                            gain: {
-                                finesse: 2,
-                                charm: 1
-                            },
-                            lose: {}
-                        }
                     },
                 ]
             },

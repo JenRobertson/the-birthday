@@ -9,6 +9,12 @@ window.onload = function () {
 
 function frame() {
     switch (game.screen) {
+        case 'title1':
+            drawTitle1();
+            break;
+        case 'title2':
+        drawTitle2();
+        break;
         case 'town':
             drawTown();
             break;
@@ -23,6 +29,21 @@ function frame() {
             break;
     }
     window.requestAnimationFrame(frame);
+}
+
+function drawTitle1() {
+    drawAsset({
+        x: 0,
+        y: 0,
+        image: document.getElementById("title1"),
+    });
+}
+function drawTitle2() {
+    drawAsset({
+        x: 0,
+        y: 0,
+        image: document.getElementById("title2"),
+    });
 }
 
 function animateAssets(container) {

@@ -1,5 +1,11 @@
 document.onkeydown = function(e) {
     switch (game.screen) {
+        case 'title1':
+            title1Keyboard(e);
+            break;
+        case 'title2':
+            title2Keyboard(e);
+        break;
         case 'town':
             townKeyboard(e);
             break;
@@ -11,7 +17,6 @@ document.onkeydown = function(e) {
             break;
         case 'party':
             partyKeyboard(e);
-            game.location = locations[4];
             break;
     }
 };
@@ -95,8 +100,8 @@ function goToNextDay(){
         game.outcomeText = null;
     }
     else {
-        game.day = "party"
-        game.screen = "party"
+        game.day = "title2"
+        game.screen = "title2"
     }
 
 }
@@ -165,7 +170,6 @@ function partyKeyboard(e){
         case 13://enter
         console.log('enter');
             if(!game.activity) {
-                game.location = locations[4];
                 game.activity = game.location.activities[0];
             }
             game.beginTextAnimation = true;
@@ -177,6 +181,17 @@ function partyKeyboard(e){
             game.outcome = selectOutcome(game.activity.outcomes);
         break;
     }
+}
+
+// title1
+function title1Keyboard(e){
+    game.screen = "town";
+}
+
+// title2
+function title2Keyboard(e){
+    game.screen = "party";
+    game.location = locations[4];
 }
 
 // generic buttons

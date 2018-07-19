@@ -1,6 +1,9 @@
 function drawActivitySelect() {
     drawTown();
-    ctx.fillStyle = "rgba(0, 0, 0, 0.9)"
+    ctx.fillStyle = "rgba(0, 0, 0, 0.9)";
+    if(game.day === 'party'){
+        ctx.fillStyle = "rgba(0, 0, 0, 1)";
+    }
     ctx.fillRect(0,0,2000,2000);
     drawAssets(activitySelectData);
     activityScrollLabels();

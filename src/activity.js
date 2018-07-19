@@ -157,8 +157,7 @@ var activityChoicesButtonsData = {
             ],
             image: document.getElementById("arrow"),
             x: 250,
-            y: 735,
-            value: 'poo1'
+            y: 735
         },
         {
             active: false,
@@ -168,8 +167,7 @@ var activityChoicesButtonsData = {
             ],
             image: document.getElementById("blank"),
             x: 250,
-            y: 790,
-            value: 'poo2'
+            y: 790
         },
     ],
 }

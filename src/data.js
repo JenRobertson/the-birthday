@@ -598,89 +598,103 @@ var locations = [
         y: 221,
         activities: [
             {
-                label: "top",
+                label: "The Baker",
                 image: document.getElementById('story-bounce'),
                 outcomes: [
                     {
-                        requirements: "true",
+                        requirements: "game.stats.baking.value >= 3 && game.stats.farming.value >= 3",
                         text: [
                             {
-                                text: "top"
+                                text: "You decide to help out by baking delicious puddings and cakes for Prince Gareth\'s birthday."
                             },
                             {
-                                text: "You try to do a flip and manage to do an amazing 360! It\'s a shame no one was there to see it."
-                            }
-                        ],
-                        result: {
-                            gain: {
-                                finesse: 2,
-                                charm: 1
+                                text: "You use your amazing farming skills to pick out the best apples and ask your fellow farmers for their freshest eggs."
                             },
-                            lose: {}
-                        }
+                            {
+                                text: "With all your baking knowledge you make an enourmous cake with blue frosting for Prince Gareth!"
+                            },
+                            {
+                                text: "Your apple crumble is perfectly put together, with tasty apple and crunchy crumble."
+                            },
+                            {
+                                text: "This helps the party immensely!"
+                            },
+                        ],
+                    },
+                    {
+                        requirements: "game.stats.baking.value >= 3",
+                        text: [
+                            {
+                                text: "You decide to help out by baking delicious puddings and cakes for Prince Gareth\'s birthday."
+                            },
+                            {
+                                text: "You use your amazing farming skills to pick out the best apples and ask your fellow farmers for their freshest eggs."
+                            },
+                            {
+                                text: "You try your best to bake a cake for Prince Gareth, but the blue frosting goes everywhere and cake is a bit droopy."
+                            },
+                            {
+                                text: "Your apple crumble it a little overcooked, but the apples are high quality and taste divine."
+                            },
+                            {
+                                text: "This helps the party!"
+                            },
+                        ],
+                    },
+                    {
+                        requirements: "game.stats.farming.value >= 3",
+                        text: [
+                            {
+                                text: "You decide to help out by baking delicious puddings and cakes for Prince Gareth\'s birthday."
+                            },
+                            {
+                                text: "You use your amazing farming skills to pick out the best apples and ask your fellow farmers for their freshest eggs."
+                            },
+                            {
+                                text: "You try your best to bake a cake for Prince Gareth, but the blue frosting goes everywhere and the cake is a bit droopy."
+                            },
+                            {
+                                text: "Your apple crumble it a little overcooked, but the apples are high quality and taste divine."
+                            },
+                            {
+                                text: "This helps the party!"
+                            },
+                        ],
                     },
                     {
                         requirements: "true",
                         text: [
                             {
-                                text: "You bounce around Mookie meadows having tons of fun."
+                                text: "You decide to help out by baking delicious puddings and cakes for Prince Gareth\'s birthday."
                             },
                             {
-                                text: "You try to do a flip but you aren\'t skilled enough and bang your head on the grass. Silly Mookie!"
+                                text: "You look around for some spare ingredients, like apples, which might be laying around."
+                            },
+                            {
+                                text: "You try your best to bake a cake for Prince Gareth, but the blue frosting goes everywhere and the cake is a bit droopy."
+                            },
+                            {
+                                text: "Your apple crumble is a little overcooked and the ingredients taste pretty stale."
+                            },
+                            {
+                                text: "This doesn\'t really help the party, but everyone thanks you for trying."
                             },
                         ],
-                        result: {
-                            gain: {
-                                finesse: 1,
-                            },
-                            lose: {
-                                charm: 1
-                            }
-                        }
                     }
                 ]
             },
             {
-                label: "Musican",
+                label: "musician",
                 image: document.getElementById('story-bounce'),
                 outcomes: [
                     {
                         requirements: "true",
                         text: [
                             {
-                                text: "Musican"
-                            },
-                            {
-                                text: "You try to do a flip and manage to do an amazing 360! It\'s a shame no one was there to see it."
+                                text: "musician"
                             }
                         ],
-                        result: {
-                            gain: {
-                                finesse: 2,
-                                charm: 1
-                            },
-                            lose: {}
-                        }
                     },
-                    {
-                        requirements: "false",
-                        text: [
-                            {
-                                text: "You bounce around Mookie meadows having tons of fun."
-                            },
-                            {
-                                text: "You try to do a flip but you aren\'t skilled enough and bang your head on the grass. Silly Mookie!"
-                            },
-                        ],
-                        result: {
-                            gain: {
-                                finesse: 1,
-                            },
-                            lose: {
-                                charm: 1
-                            }
-                        }
-                    }
                 ]
             },
             {
@@ -692,9 +706,6 @@ var locations = [
                         text: [
                             {
                                 text: "Host"
-                            },
-                            {
-                                text: "You try to do a flip and manage to do an amazing 360! It\'s a shame no one was there to see it."
                             }
                         ],
                         result: {
@@ -705,25 +716,6 @@ var locations = [
                             lose: {}
                         }
                     },
-                    {
-                        requirements: "true",
-                        text: [
-                            {
-                                text: "You bounce around Mookie meadows having tons of fun."
-                            },
-                            {
-                                text: "You try to do a flip but you aren\'t skilled enough and bang your head on the grass. Silly Mookie!"
-                            },
-                        ],
-                        result: {
-                            gain: {
-                                finesse: 1,
-                            },
-                            lose: {
-                                charm: 1
-                            }
-                        }
-                    }
                 ]
             },
             {
@@ -737,8 +729,16 @@ var locations = [
                                 text: "Drunk!"
                             },
                             {
-                                text: "You try to do a flip and manage to do an amazing 360! It\'s a shame no one was there to see it."
-                            }
+                                text: "Drunk!2"
+                            },
+                        ],
+                    },
+                    {
+                        requirements: "true",
+                        text: [
+                            {
+                                text: "Drunk!"
+                            },
                         ],
                         result: {
                             gain: {
@@ -748,25 +748,6 @@ var locations = [
                             lose: {}
                         }
                     },
-                    {
-                        requirements: "true",
-                        text: [
-                            {
-                                text: "You bounce around Mookie meadows having tons of fun."
-                            },
-                            {
-                                text: "You try to do a flip but you aren\'t skilled enough and bang your head on the grass. Silly Mookie!"
-                            },
-                        ],
-                        result: {
-                            gain: {
-                                finesse: 1,
-                            },
-                            lose: {
-                                charm: 1
-                            }
-                        }
-                    }
                 ]
             },
                         
@@ -775,9 +756,9 @@ var locations = [
 ];
 
 var game = {
-    day: 1,
+    day: 6,
     numberOfDays: 6,
-    screen: "party",
+    screen: "title1",
     location: locations[0],
     activity: null,
     outcome: null,

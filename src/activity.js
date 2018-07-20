@@ -104,16 +104,19 @@ function addStatsMessagesToOuterOutcomes(){
 
 
 function addStatsMessages(outcome){
-    var gain = {
-        text: createStatsMessage('gain', outcome.result.gain),
-        updateStat: createUpdateStatValue('gain', outcome.result.gain)
-    };
-    var lose = {
-        text: createStatsMessage('lose', outcome.result.lose),
-        updateStat: createUpdateStatValue('lose', outcome.result.lose)
-    };
-    if (gain.text) outcome.text.push(gain);
-    if (lose.text) outcome.text.push(lose);
+    if(outcome.result){
+        var gain = {
+            text: createStatsMessage('gain', outcome.result.gain),
+            updateStat: createUpdateStatValue('gain', outcome.result.gain)
+        };
+        var lose = {
+            text: createStatsMessage('lose', outcome.result.lose),
+            updateStat: createUpdateStatValue('lose', outcome.result.lose)
+        };
+        if (gain.text) outcome.text.push(gain);
+        if (lose.text) outcome.text.push(lose);
+        outcome.result = null;
+    }
 }
 
 function createUpdateStatValue(type, textFunction){

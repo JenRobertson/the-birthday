@@ -599,7 +599,7 @@ var locations = [
         activities: [
             {
                 label: "The Baker",
-                image: document.getElementById('story-bounce'),
+                image: document.getElementById('story-bake'),
                 outcomes: [
                     {
                         requirements: "game.stats.baking.value >= 3 && game.stats.farming.value >= 3",
@@ -685,7 +685,7 @@ var locations = [
             },
             {
                 label: "musician",
-                image: document.getElementById('story-bounce'),
+                image: document.getElementById('end-tuba'),
                 outcomes: [
                     {
                         requirements: "game.stats.wealth.value >= 3 && game.stats.finesse.value >= 3",
@@ -780,7 +780,7 @@ var locations = [
             },
             {
                 label: "Host",
-                image: document.getElementById('story-bounce'),
+                image: document.getElementById('end-host'),
                 outcomes: [
                     {
                         requirements: "game.stats.baking.value >= 3 && game.stats.charm.value >= 3",
@@ -896,7 +896,7 @@ var locations = [
             },
             {
                 label: "Drunk",
-                image: document.getElementById('story-bounce'),
+                image: document.getElementById('story-cider'),
                 outcomes: [
                     {
                         requirements: "game.stats.farming.value >=3 && game.stats.charm.value >=3",
@@ -1001,7 +1001,7 @@ var locations = [
                     },
                 ]
             },
-                        
+
         ]
     }
 ];

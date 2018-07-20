@@ -13,16 +13,16 @@ var frameAsset = {
 
 var paintingTemplate = {
     image: document.getElementById("painting-template"),
-    x: frameAsset.x + 50,
-    y: frameAsset.y + 50
+    x: frameAsset.x + 55,
+    y: frameAsset.y + 55
 }
 
 function drawOutcome() {
     if (game.activity.image){
         drawAsset({
             image: game.activity.image,
-            x: frameAsset.x + 50,
-            y: frameAsset.y + 50
+            x: frameAsset.x + 55,
+            y: frameAsset.y + 55
         });
     }
     else{
@@ -90,7 +90,13 @@ function addStatsMessagesToOuterOutcomes(){
     locations.forEach(function (location) {
         location.activities.forEach(function (activity){
             activity.outcomes.forEach(function (outcome){
-                addStatsMessages(outcome);
+                if(outcome.result){
+                    addStatsMessages(outcome);
+                }
+                else{
+                    //stops it ending too soon, todo fix this issue lol
+                    outcome.text.push({text: ''})
+                }
             });
         });
     });
@@ -151,8 +157,7 @@ var activityChoicesButtonsData = {
             ],
             image: document.getElementById("arrow"),
             x: 250,
-            y: 735,
-            value: 'poo1'
+            y: 735
         },
         {
             active: false,
@@ -162,8 +167,7 @@ var activityChoicesButtonsData = {
             ],
             image: document.getElementById("blank"),
             x: 250,
-            y: 790,
-            value: 'poo2'
+            y: 790
         },
     ],
 }

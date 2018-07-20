@@ -1,5 +1,11 @@
 document.onkeydown = function(e) {
     switch (game.screen) {
+        case 'title1':
+            title1Keyboard(e);
+            break;
+        case 'title2':
+            title2Keyboard(e);
+        break;
         case 'town':
             townKeyboard(e);
             break;
@@ -8,6 +14,15 @@ document.onkeydown = function(e) {
             break;
         case 'activity':
             activityKeyboard(e);
+            break;
+        case 'party':
+            partyKeyboard(e);
+            break;
+        case 'end':
+            endKeyboard(e);
+            break;
+        case 'credits':
+            creditsKeyboard(e);
             break;
     }
 };
@@ -82,9 +97,25 @@ function selectOutcome(outcomes) {
     }
 }
 
+function goToNextDay(){
+    if (game.day < game.numberOfDays){
+        game.day++;
+        game.screen = "town";
+        game.activity = null;
+        game.outcome = null;
+        game.outcomeText = null;
+    }
+    else {
+        game.day = "title2"
+        game.screen = "title2"
+    }
+
+}
+
 // activity
 var innerChoiceIndex = 0;
 function activityKeyboard(e){
+    console.log('activity keyboard');
     switch (e.keyCode) {
         case 38://up
             if (game.outcome.text[game.outcomeText.index].choice){
@@ -98,11 +129,19 @@ function activityKeyboard(e){
             break;
         case 13://enter
             if (game.outcomeText.index + 1 >= game.outcome.text.length && game.outcomeText.complete){ //all the text for outcome is finished
-                game.day++;
-                game.screen = "town";
-                game.activity = null;
-                game.outcome = null;
-                game.outcomeText = null;
+                if(game.day === 'party'){
+                    console.log('go to the end please')
+                    game.screen = 'end';
+                    game.day = 'end';
+                }
+                if(game.day === 'end'){
+                    game.screen = 'credits';
+                    game.day = 'credits';
+                }
+                else{
+                    goToNextDay();
+                }
+
             }
             else { // more text to come
                 if (game.outcome.text[game.outcomeText.index].choice) {//on choice screen
@@ -118,6 +157,9 @@ function activityKeyboard(e){
                 }
                 else{
                     if(game.outcomeText.complete) {//text animation complete
+                        if(game.outcome.text[game.outcomeText.index].function){//if it has a function
+                            eval(game.outcome.text[game.outcomeText.index].function);//run it
+                        }
                         game.beginTextAnimation = true;
                         game.outcomeText.index++;
                         if (game.outcome.text[game.outcomeText.index].updateStat) {
@@ -136,6 +178,69 @@ function activityKeyboard(e){
     }
 }
 
+// party
+function partyKeyboard(e){
+    switch (e.keyCode) {
+        case 38://up
+            game.activity = game.location.activities[buttons_up(partyData.buttons)];
+            console.log(game.activity);
+            break;
+        case 40://down
+            game.activity = game.location.activities[buttons_down(partyData.buttons)];
+            console.log(game.activity);
+            break;
+        case 13://enter
+        console.log('enter');
+            if(!game.activity) {
+                game.activity = game.location.activities[0];
+            }
+            game.beginTextAnimation = true;
+            game.outcomeText = {
+                complete: false,
+                index: 0,
+            };
+            game.screen = "activity";
+            game.outcome = selectOutcome(game.activity.outcomes);
+        break;
+    }
+}
+
+// title1
+function title1Keyboard(e){// opening title
+    game.screen = "town";
+}
+
+// title2
+function title2Keyboard(e){ //before the party day
+    game.day = "party";
+    game.screen = "party";
+    game.location = locations[4];
+    game.activity = game.location.activities[0];
+}
+
+// credits
+function creditsKeyboard(e){ //credits
+    location.reload();
+}
+
+// end keyboard
+function endKeyboard(e){ // description of the party at the end, before gareths monologue
+    console.log('enter on the end keyboard');
+    game.location = locations[5];
+    game.activity = game.location.activities[0];
+    game.screen = 'activity';
+
+    if(!game.activity) {
+        game.activity = game.location.activities[0];
+    }
+    game.beginTextAnimation = true;
+    game.outcomeText = {
+        complete: false,
+        index: 0,
+    };
+    game.screen = "activity";
+    game.outcome = selectOutcome(game.activity.outcomes);
+}
 
 // generic buttons
 function buttons_down(buttonsArray) {

@@ -9,6 +9,12 @@ window.onload = function () {
 
 function frame() {
     switch (game.screen) {
+        case 'title1':
+            drawTitle1();
+            break;
+        case 'title2':
+        drawTitle2();
+        break;
         case 'town':
             drawTown();
             break;
@@ -18,8 +24,32 @@ function frame() {
         case 'activity':
             drawActivity();
             break;
+        case 'party':
+            drawParty();
+            break;
+        case 'end':
+            drawEnd();
+            break;
+        case 'credits':
+            drawCredits();
+            break;
     }
     window.requestAnimationFrame(frame);
+}
+
+function drawTitle1() {
+    drawAsset({
+        x: 0,
+        y: 0,
+        image: document.getElementById("title1"),
+    });
+}
+function drawTitle2() {
+    drawAsset({
+        x: 0,
+        y: 0,
+        image: document.getElementById("title2"),
+    });
 }
 
 function animateAssets(container) {
@@ -73,6 +103,8 @@ function drawStats(x, y){
     ctx.font="20px Pixeled";
     var i = 0;
     for (var key in game.stats){
+        // get rid of negative values
+        game.stats[key].value = game.stats[key].value < 0 ? 0 : game.stats[key].value;
         ctx.fillText(`${game.stats[key].label}: ${game.stats[key].value}`, statsImage.x + 20, statsImage.y + 50 + i);
         i+= 50;
     }

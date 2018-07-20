@@ -1123,7 +1123,7 @@ But the best present of all is you just being here."
 // fade to black
 
 var game = {
-    day: 6,
+    day: 1,
     numberOfDays: 6,
     screen: "town",
     endResult: "good",
@@ -1146,7 +1146,7 @@ var game = {
         },
         farming: {
             label: 'Farming',
-            value: 0,
+            value: 1,
         },
         finesse: {
             label: 'Finesse',
@@ -1154,9 +1154,9 @@ var game = {
         },
         charm: {
             label: 'Charm',
-            value: 0,
+            value: 1,
         }
     }
 }
-//game.stats.wealth.value
+
 

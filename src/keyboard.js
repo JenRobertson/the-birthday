@@ -62,11 +62,9 @@ function activitySelectKeyboard(e){
     switch (e.keyCode) {
         case 38://up
             game.activity = game.location.activities[buttons_up(activitySelectData.buttons)];
-            console.log(game.activity);
             break;
         case 40://down
             game.activity = game.location.activities[buttons_down(activitySelectData.buttons)];
-            console.log(game.activity);
             break;
         case 13://enter
             game.beginTextAnimation = true;
@@ -88,8 +86,6 @@ function selectOutcome(outcomes) {
     }
     else { // requirements exist
         for(var i = 0; i < outcomes.length; i++) {
-            console.log(outcomes[i].requirements);
-            console.log(eval(outcomes[i].requirements));
             if (eval(outcomes[i].requirements)){
                 return outcomes[i];
             }
@@ -115,7 +111,6 @@ function goToNextDay(){
 // activity
 var innerChoiceIndex = 0;
 function activityKeyboard(e){
-    console.log('activity keyboard');
     switch (e.keyCode) {
         case 38://up
             if (game.outcome.text[game.outcomeText.index].choice){
@@ -130,11 +125,10 @@ function activityKeyboard(e){
         case 13://enter
             if (game.outcomeText.index + 1 >= game.outcome.text.length && game.outcomeText.complete){ //all the text for outcome is finished
                 if(game.day === 'party'){
-                    console.log('go to the end please')
                     game.screen = 'end';
                     game.day = 'end';
                 }
-                if(game.day === 'end'){
+                else if(game.day === 'end'){
                     game.screen = 'credits';
                     game.day = 'credits';
                 }
@@ -145,7 +139,6 @@ function activityKeyboard(e){
             }
             else { // more text to come
                 if (game.outcome.text[game.outcomeText.index].choice) {//on choice screen
-                    console.log('choice! from keyboard ' + innerChoiceIndex);
                     game.outcome = selectOutcome(game.outcome.text[game.outcomeText.index].choice[innerChoiceIndex].outcomes);
                     addStatsMessages(game.outcome);
                     game.outcomeText.index = 0;
@@ -169,7 +162,6 @@ function activityKeyboard(e){
                     }
                     else {// text not finished animating
                         //complete animation
-                        console.log('not complete');
                         amountToCutOffText = 0;
                     }
                 }
@@ -183,14 +175,11 @@ function partyKeyboard(e){
     switch (e.keyCode) {
         case 38://up
             game.activity = game.location.activities[buttons_up(partyData.buttons)];
-            console.log(game.activity);
             break;
         case 40://down
             game.activity = game.location.activities[buttons_down(partyData.buttons)];
-            console.log(game.activity);
             break;
         case 13://enter
-        console.log('enter');
             if(!game.activity) {
                 game.activity = game.location.activities[0];
             }
@@ -225,7 +214,6 @@ function creditsKeyboard(e){ //credits
 
 // end keyboard
 function endKeyboard(e){ // description of the party at the end, before gareths monologue
-    console.log('enter on the end keyboard');
     game.location = locations[5];
     game.activity = game.location.activities[0];
     game.screen = 'activity';
@@ -262,7 +250,6 @@ function buttons_down(buttonsArray) {
 }
 
 function buttons_up(buttonsArray) {
-    console.log('buttons up');
     for (let i = 0; i < buttonsArray.length; i++){
 
         button = buttonsArray[i];

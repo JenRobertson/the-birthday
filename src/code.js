@@ -27,6 +27,12 @@ function frame() {
         case 'party':
             drawParty();
             break;
+        case 'end':
+            drawEnd();
+            break;
+        case 'credits':
+            drawCredits();
+            break;
     }
     window.requestAnimationFrame(frame);
 }

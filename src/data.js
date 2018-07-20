@@ -617,7 +617,8 @@ var locations = [
                                 text: "Your apple crumble is perfectly put together, with tasty apple and crunchy crumble."
                             },
                             {
-                                text: "This helps the party immensely!"
+                                text: "This helps the party immensely!",
+                                function: "game.endResult = 'good'"
                             },
                         ],
                     },
@@ -637,7 +638,8 @@ var locations = [
                                 text: "Your apple crumble it a little overcooked, but the apples are high quality and taste divine."
                             },
                             {
-                                text: "This helps the party!"
+                                text: "This helps the party!",
+                                function: "game.endResult = 'ok'"
                             },
                         ],
                     },
@@ -657,7 +659,8 @@ var locations = [
                                 text: "Your apple crumble it a little overcooked, but the apples are high quality and taste divine."
                             },
                             {
-                                text: "This helps the party!"
+                                text: "This helps the party!",
+                                function: "game.endResult = 'ok'"
                             },
                         ],
                     },
@@ -677,7 +680,8 @@ var locations = [
                                 text: "Your apple crumble is a little overcooked and the ingredients taste pretty stale."
                             },
                             {
-                                text: "This doesn\'t really help the party, but everyone thanks you for trying."
+                                text: "This doesn\'t really help the party, but everyone thanks you for trying.",
+                                function: "game.endResult = 'bad'"
                             },
                         ],
                     }
@@ -703,7 +707,8 @@ var locations = [
                                 text: "With your considerable finesse, you manage to play the tuba beautifully. The guests are wowed and everyone begins dancing to your jaunty tune."
                             },
                             {
-                                text: "This helps the party immensely!"
+                                text: "This helps the party immensely!",
+                                function: "game.endResult = 'good'"
                             },
                         ],
                     },
@@ -723,7 +728,8 @@ var locations = [
                                 text: "With your considerable finesse, you manage to play a beautiful rhythm on the triangle. No one can really dance to the triangle, but everyone enjoys the music!"
                             },
                             {
-                                text: "This helps the party!"
+                                text: "This helps the party!",
+                                function: "game.endResult = 'ok'"
                             },
                         ],
                     },
@@ -746,7 +752,8 @@ var locations = [
                                 text: "The amazing quality of the instrument slightly makes up for your dodgey playing. It\'s quite a funny moment and the party guests have a chuckle."
                             },
                             {
-                                text: "This helps the party!"
+                                text: "This helps the party!",
+                                function: "game.endResult = 'ok'"
                             },
                         ],
                     },
@@ -772,7 +779,8 @@ var locations = [
                                 text: "You tried your best but your music wasn\'t great and no one could really dance to it."
                             },
                             {
-                                text: "This doesn\'t really help the party, but everyone thanks you for trying."
+                                text: "This doesn\'t really help the party, but everyone thanks you for trying.",
+                                function: "game.endResult = 'bad'"
                             }
                         ],
                     },
@@ -804,7 +812,8 @@ var locations = [
                                 text: "Prince Gareth wipes a tear from his eye. \"Thanks Mookie, that was aces!\""
                             },
                             {
-                                text: "This helps the party immensely!"
+                                text: "This helps the party immensely!",
+                                function: "game.endResult = 'good'"
                             },
                         ],
                     },
@@ -830,7 +839,8 @@ var locations = [
                                 text: "Prince Gareth wipes a tear from his eye. \"Thanks Mookie, that was aces!\""
                             },
                             {
-                                text: "This helps the party!"
+                                text: "This helps the party!",
+                                function: "game.endResult = 'ok'"
                             },
                         ],
                     },
@@ -859,7 +869,8 @@ var locations = [
                                 text: "Prince Gareth chuckles and shakes his head and says, \"Thanks Mookie, you\'re cool!\""
                             },
                             {
-                                text: "This helps the party!"
+                                text: "This helps the party!",
+                                function: "game.endResult = 'ok'"
                             },
                         ],
                     },
@@ -888,7 +899,8 @@ var locations = [
                                 text: "Prince Gareth chuckles and shakes his head and says, \"Thanks Mookie, you\'re cool!\""
                             },
                             {
-                                text: "Maybe being a host wasn\'t the best job for you, but everyone appreciates the effort."
+                                text: "Maybe being a host wasn\'t the best job for you, but everyone appreciates the effort.",
+                                function: "game.endResult = 'bad'"
                             },
                         ],
                     },
@@ -917,7 +929,8 @@ var locations = [
                                 text: "All the guests have a glass and have a jolly good time."
                             },
                             {
-                                text: "This helps the party immensely!"
+                                text: "This helps the party immensely!",
+                                function: "game.endResult = 'good'"
                             },
                         ],
                     },
@@ -940,7 +953,8 @@ var locations = [
                                 text: "It\'s delicious, and those who were brave enough to drink it have a jolly time!"
                             },
                             {
-                                text: "This helps the party!"
+                                text: "This helps the party!",
+                                function: "game.endResult = 'ok'"
                             },
                         ],
                     },
@@ -969,7 +983,8 @@ var locations = [
                                 text: "It\'s not ideal, but at least the dignitaries are letting loose!"
                             },
                             {
-                                text: "This helps the party!"
+                                text: "This helps the party!",
+                                function: "game.endResult = 'ok'"
                             },
                         ],
                     },
@@ -995,21 +1010,123 @@ var locations = [
                                 text: "Unfortunately, it seems the cider was far too strong and did not taste good at all."
                             },
                             {
-                                text: "This doesn\'t really help the party, but everyone thanks you for trying."
+                                text: "This doesn\'t really help the party, but everyone thanks you for trying.",
+                                function: "game.endResult = 'bad'"
                             }
                         ],
                     },
                 ]
             },
-
+        ]
+    },
+    {
+        name: 'end',
+        x: 929,
+        y: 221,
+        activities: [
+            {
+                label: "Good",
+                image: document.getElementById('story-bake'),
+                outcomes: [
+                    {
+                        requirements: "game.endResult === 'good'",
+                        text: [
+                            {
+                                text: "\"Mookie, thanks so much for helping out with my party.\""
+                            },
+                            {
+                                text: "\"I\'m so impressed, I had no idea you were so skilled! You've really gone above and beyond!\""
+                            },
+                            {
+                                text: "\"But the best present of all is you just being here.\""
+                            },
+                            {
+                                text: "\"Moo :)\", you say."
+                            }
+                        ],
+                    },
+                    {
+                        requirements: "game.endResult === 'ok'",
+                        text: [
+                            {
+                                text: "\"Mookie, thanks so much for helping out with my party.\""
+                            },
+                            {
+                                text: "\"You've done a good job!\""
+                            },
+                            {
+                                text: "\"But the best present of all is you just being here.\""
+                            },
+                            {
+                                text: "\"Moo :)\", you say."
+                            }
+                        ],
+                    },
+                    {
+                        requirements: "game.endResult === 'bad'",
+                        text: [
+                            {
+                                text: "\"Mookie, thanks so much for helping out with my party.\""
+                            },
+                            {
+                                text: "\"I know things didn't go exactly as you planned,\""
+                            },
+                            {
+                                text: "\"But the best present of all is you just being here.\""
+                            },
+                            {
+                                text: "\"Moo :)\", you say."
+                            }
+                        ],
+                    },
+                ]
+            },
         ]
     }
 ];
 
+
+/*good
+The party carries on late into the night.
+Prince gareth get's a massive pile of presents.
+All the guests have a great time!
+As the party draws to a close, Prince Gareth takes you aside.
+*/
+
+//worst
+/*
+"Mookie, thanks so much for helping out with my party.
+I know things didn't go exactly as you planned,
+but the best present of all is you just being here.""
+
+"Moo :)", you say.
+*/
+
+//medium
+/*
+"Mookie, thanks so much for helping out with my party.
+You've done a great job!
+but the best present of all is you just being here.""
+
+"Moo :)", you say.
+*/
+
+//good
+/*
+"Mookie, thanks so much for helping out with my party.
+I'm so impressed, I had no idea you were so skilled! You've really gone above and beyond!
+But the best present of all is you just being here."
+
+"Moo :)", you say.
+*/
+
+// fade to black
+
 var game = {
     day: 6,
     numberOfDays: 6,
-    screen: "title1",
+    screen: "town",
+    endResult: "good",
     location: locations[0],
     activity: null,
     outcome: null,
@@ -1025,19 +1142,19 @@ var game = {
         },
         baking: {
             label: 'Baking',
-            value: 2,
+            value: 0,
         },
         farming: {
             label: 'Farming',
-            value: 1,
+            value: 0,
         },
         finesse: {
             label: 'Finesse',
-            value: 1,
+            value: 0,
         },
         charm: {
             label: 'Charm',
-            value: 2,
+            value: 0,
         }
     }
 }

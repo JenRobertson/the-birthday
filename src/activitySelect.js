@@ -5,9 +5,13 @@ function drawActivitySelect() {
         ctx.fillStyle = "rgba(0, 0, 0, 1)";
     }
     ctx.fillRect(0,0,2000,2000);
-    drawAssets(activitySelectData);
-    activityScrollLabels();
-    drawStats(1363, 300);
+    if(game.day != 'end'){
+        drawAssets(activitySelectData);
+        activityScrollLabels();
+    }
+    if(game.day != 'party' && game.day != 'end'){
+        drawStats(1363, 300);
+    }
 }
 
 function activityScrollLabels(){
@@ -24,9 +28,9 @@ var activitySelectData = {
             images: [
                 document.getElementById("scroll-long"),
                 document.getElementById("scroll-long-active"),
-            ], 
+            ],
             image: document.getElementById("scroll-long-active"),
-            x: 420, 
+            x: 420,
             y: 238,
             value: game.location.activities[0]
         },
@@ -35,9 +39,9 @@ var activitySelectData = {
             images: [
                 document.getElementById("scroll-long"),
                 document.getElementById("scroll-long-active"),
-            ], 
+            ],
             image: document.getElementById("scroll-long"),
-            x: 420, 
+            x: 420,
             y: 450,
             value: game.location.activities[1]
         },

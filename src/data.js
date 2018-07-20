@@ -629,13 +629,13 @@ var locations = [
                                 text: "You decide to help out by baking delicious puddings and cakes for Prince Gareth\'s birthday."
                             },
                             {
-                                text: "You use your amazing farming skills to pick out the best apples and ask your fellow farmers for their freshest eggs."
+                                text: "You look around for some spare ingredients, like apples, which might be laying around."
                             },
                             {
-                                text: "You try your best to bake a cake for Prince Gareth, but the blue frosting goes everywhere and cake is a bit droopy."
+                                text: "With all your baking knowledge you make an enourmous cake with blue frosting for Prince Gareth!"
                             },
                             {
-                                text: "Your apple crumble it a little overcooked, but the apples are high quality and taste divine."
+                                text: "Although the apple\'s weren\'t the freshest, your crumble still tastes pretty good."
                             },
                             {
                                 text: "This helps the party!",
@@ -830,13 +830,13 @@ var locations = [
                                 text: "With your impressive baking knowledge you\'re able to recommend different dishes to the guests and wow them with detailed background information."
                             },
                             {
-                                text: "It\'s time to make a speech!"
+                                text: "It\'s time to make a speech! You are a bit nervous but you still manage to thank everyone for coming and tell Prince Gareth a happy birthday. "
                             },
                             {
-                                text: "You tap into your iridescent charm and perform an eloquent, touching and humorous address. You crack a joke to finish and everyone falls around laughing."
+                                text: "You try to finish with a joke, but you got the names in it mixed up and so the joke made so sense."
                             },
                             {
-                                text: "Prince Gareth wipes a tear from his eye. \"Thanks Mookie, that was aces!\""
+                                text: "Prince Gareth chuckles and shakes his head and says, \"Thanks Mookie, you\'re cool!\""
                             },
                             {
                                 text: "This helps the party!",
@@ -860,13 +860,13 @@ var locations = [
                                 text: "Baron Burton asks about one of the dishes but you have no idea what it even is."
                             },
                             {
-                                text: "It\'s time to make a speech! You are a bit nervous but you still manage to thank everyone for coming and tell Prince Gareth a happy birthday. "
+                                text: "It\'s time to make a speech!"
                             },
                             {
-                                text: "You try to finish with a joke, but you got the names in it mixed up and so the joke made so sense."
+                                text: "You tap into your iridescent charm and perform an eloquent, touching and humorous address. You crack a joke to finish and everyone falls around laughing."
                             },
                             {
-                                text: "Prince Gareth chuckles and shakes his head and says, \"Thanks Mookie, you\'re cool!\""
+                                text: "Prince Gareth wipes a tear from his eye. \"Thanks Mookie, that was aces!\""
                             },
                             {
                                 text: "This helps the party!",
@@ -917,7 +917,7 @@ var locations = [
                                 text: "You decide to brew some cider for party guests to drink!"
                             },
                             {
-                                text: "You skillfully select the best apples from the orchard and ferment them with some delicious spices. "
+                                text: "You skillfully select the best apples from the orchard and ferment them with some delicious spices."
                             },
                             {
                                 text: "You roll your best barrel to the party and ask if anyone would like to try some."
@@ -1026,7 +1026,7 @@ var locations = [
         activities: [
             {
                 label: "Good",
-                image: document.getElementById('story-bake'),
+                image: document.getElementById('end-end'),
                 outcomes: [
                     {
                         requirements: "game.endResult === 'good'",
@@ -1125,7 +1125,7 @@ But the best present of all is you just being here."
 var game = {
     day: 1,
     numberOfDays: 6,
-    screen: "town",
+    screen: "title1",
     endResult: "good",
     location: locations[0],
     activity: null,

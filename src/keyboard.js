@@ -2,7 +2,13 @@ document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 13://enter
         audio.click.audio.play();
+        break;
+        case 38://up
+        case 40://down
+        audio.paper.audio.play();
+        break;
     }
+    
 
     switch (game.screen) {
         case 'title1':

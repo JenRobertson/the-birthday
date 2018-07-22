@@ -1259,7 +1259,7 @@ var audio = {
     },
     new_day_ding: {
         audio: document.getElementById('audio-new-day'),
-        volume: 0.5
+        volume: 0.4
     },
     gain: {
         audio: document.getElementById('audio-gain'),
@@ -1280,5 +1280,9 @@ var audio = {
     party: {
         audio: document.getElementById('audio-party'),
         volume: 0.4
+    },
+    paper: {
+        audio: document.getElementById('audio-paper'),
+        volume: 1
     }
 }

@@ -107,11 +107,11 @@ function addStatsMessages(outcome){
     if(outcome.result){
         var gain = {
             text: createStatsMessage('gain', outcome.result.gain),
-            updateStat: createUpdateStatValue('gain', outcome.result.gain)
+            updateStat: `${createUpdateStatValue('gain', outcome.result.gain)} audio.click.audio.pause(); audio.click.audio.currentTime = 0; audio.gain.audio.play();`
         };
         var lose = {
             text: createStatsMessage('lose', outcome.result.lose),
-            updateStat: createUpdateStatValue('lose', outcome.result.lose)
+            updateStat: `${createUpdateStatValue('lose', outcome.result.lose)} audio.click.audio.pause(); audio.click.audio.currentTime = 0; audio.lose.audio.play();`
         };
         if (gain.text) outcome.text.push(gain);
         if (lose.text) outcome.text.push(lose);

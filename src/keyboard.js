@@ -1,4 +1,9 @@
 document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 13://enter
+        audio.click.audio.play();
+    }
+
     switch (game.screen) {
         case 'title1':
             title1Keyboard(e);
@@ -40,6 +45,7 @@ function townKeyboard(e){
             movePlayer(locations[buttons_down(townData.buttons)]);
             break;
         case 13://enter
+            audio.gong.audio.play();
             game.screen = "activity_select";
             game.activity = game.location.activities[0];
             // set activity button labels
@@ -97,6 +103,7 @@ function selectOutcome(outcomes) {
 }
 
 function goToNextDay(){
+    audio.new_day_ding.audio.play();
     if (game.day < game.numberOfDays){
         game.day++;
         game.screen = "town";
@@ -107,6 +114,8 @@ function goToNextDay(){
     else {
         game.day = "title2"
         game.screen = "title2"
+        audio.town.audio.pause();
+        audio.party.audio.play();
     }
 
 }
@@ -202,6 +211,7 @@ function partyKeyboard(e){
 
 // title1
 function title1Keyboard(e){// opening title
+    audio.town.audio.play();
     game.screen = "intro";
 }
 

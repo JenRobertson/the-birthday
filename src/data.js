@@ -1252,4 +1252,33 @@ var game = {
     }
 }
 
-
+var audio = {
+    town: {
+        audio: document.getElementById('audio-town'),
+        volume: 0.1
+    },
+    new_day_ding: {
+        audio: document.getElementById('audio-new-day'),
+        volume: 0.5
+    },
+    gain: {
+        audio: document.getElementById('audio-gain'),
+        volume: 1
+    },
+    lose: {
+        audio: document.getElementById('audio-lose'),
+        volume: 1
+    },
+    click: {
+        audio: document.getElementById('audio-click'),
+        volume: 0.5
+    },
+    gong: {
+        audio: document.getElementById('audio-gong'),
+        volume: 0.7
+    },
+    party: {
+        audio: document.getElementById('audio-party'),
+        volume: 0.4
+    }
+}

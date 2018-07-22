@@ -3,6 +3,7 @@ var ctx, c;
 window.onload = function () {
     canvasElement = document.getElementById("ctx");
     ctx = canvasElement.getContext("2d");
+    setVolumes();
     window.requestAnimationFrame(frame);
     addStatsMessagesToOuterOutcomes();
 }
@@ -119,6 +120,12 @@ function drawStats(x, y){
         game.stats[key].value = game.stats[key].value < 0 ? 0 : game.stats[key].value;
         ctx.fillText(`${game.stats[key].label}: ${game.stats[key].value}`, statsImage.x + 20, statsImage.y + 50 + i);
         i+= 50;
+    }
+}
+
+function setVolumes(){
+    for (var key in audio){
+        audio[key].audio.volume = audio[key].volume;
     }
 }
 

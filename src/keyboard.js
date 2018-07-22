@@ -142,6 +142,7 @@ function activityKeyboard(e){
                     game.outcome = selectOutcome(game.outcome.text[game.outcomeText.index].choice[game.innerChoiceIndex].outcomes);
                     addStatsMessages(game.outcome);
                     game.outcomeText.index = 0;
+                    game.outcomeText.complete = false;
                     //reset button choice back to top
                     game.innerChoiceIndex = 0;
                     activityChoicesButtonsData.buttons[0].active = true;

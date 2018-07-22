@@ -87,7 +87,7 @@ var locations = [
                                                         text: "You try to do a somersault but you don't have much finesse and accidentally fall right into a pyramid of champaign glasses. "
                                                     },
                                                     {
-                                                        text: "You're okay, but you don't wait to see the courtiers reactions."
+                                                        text: "You\'re okay, but you don't wait to see the courtiers reactions."
                                                     },
                                                 ],
                                                 result: {
@@ -234,11 +234,27 @@ var locations = [
                 label: "Study recipes",
                 image: document.getElementById('story-study'),
                 outcomes: [
+                    // {
+                    //     requirements: "Math.random() < 0.5",
+                    //     text: [
+                    //         {
+                    //             text: "You surround yourself with old sticky cooking books and try to understand the recipes."
+                    //         }
+                    //     ],
+                    //     result: {
+                    //         gain: {
+                    //             finesse: 2,
+                    //             baking: 2
+                    //         },
+                    //         lose: {}
+                    //     }
+                    // },
                     {
+                        requirements: "true",
                         text: [
                             {
                                 text: "You surround yourself with old sticky cooking books and try to understand the recipes."
-                            }
+                            },
                         ],
                         result: {
                             gain: {
@@ -380,12 +396,6 @@ var locations = [
                                 ]
                             }
                         ],
-                        result: {
-                            gain: {},
-                            lose: {
-                                finesse: 1
-                            }
-                        }
                     },
                 ]
             },
@@ -529,7 +539,7 @@ var locations = [
                 image: document.getElementById('story-nap'),
                 outcomes: [
                     {
-                        requirements: "Math.random() < 0.1",
+                        requirements: "Math.random() < 0.3",
                         text: [
                             {
                                 text: "You settle down and have a relaxing nap among the grass and flowers. "
@@ -1124,7 +1134,7 @@ var locations = [
                                 text: "\"But the best present of all is you just being here.\""
                             },
                             {
-                                text: "\"Moo :)\", you say."
+                                text: "\"Moo\", says Mookie."
                             }
                         ],
                     },
@@ -1141,7 +1151,7 @@ var locations = [
                                 text: "\"But the best present of all is you just being here.\""
                             },
                             {
-                                text: "\"Moo :)\", you say."
+                                text: "\"Moo\", says Mookie."
                             }
                         ],
                     },
@@ -1158,7 +1168,7 @@ var locations = [
                                 text: "\"But the best present of all is you just being here.\""
                             },
                             {
-                                text: "\"Moo :)\", you say."
+                                text: "\"Moo\", says Mookie."
                             }
                         ],
                     },

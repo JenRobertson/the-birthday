@@ -109,17 +109,17 @@ function goToNextDay(){
 }
 
 // activity
-var innerChoiceIndex = 0;
+game.innerChoiceIndex = 0;
 function activityKeyboard(e){
     switch (e.keyCode) {
         case 38://up
             if (game.outcome.text[game.outcomeText.index].choice){
-                innerChoiceIndex = buttons_up(activityChoicesButtonsData.buttons);
+                game.innerChoiceIndex = buttons_up(activityChoicesButtonsData.buttons);
             }
             break;
         case 40://down
             if (game.outcome.text[game.outcomeText.index].choice){
-                innerChoiceIndex = buttons_down(activityChoicesButtonsData.buttons);
+                game.innerChoiceIndex = buttons_down(activityChoicesButtonsData.buttons);
             }
             break;
         case 13://enter
@@ -139,14 +139,16 @@ function activityKeyboard(e){
             }
             else { // more text to come
                 if (game.outcome.text[game.outcomeText.index].choice) {//on choice screen
-                    game.outcome = selectOutcome(game.outcome.text[game.outcomeText.index].choice[innerChoiceIndex].outcomes);
+                    game.outcome = selectOutcome(game.outcome.text[game.outcomeText.index].choice[game.innerChoiceIndex].outcomes);
                     addStatsMessages(game.outcome);
                     game.outcomeText.index = 0;
                     //reset button choice back to top
+                    game.innerChoiceIndex = 0;
                     activityChoicesButtonsData.buttons[0].active = true;
                     activityChoicesButtonsData.buttons[0].image = activityChoicesButtonsData.buttons[0].images[1];
                     activityChoicesButtonsData.buttons[1].active = false;
                     activityChoicesButtonsData.buttons[1].image = activityChoicesButtonsData.buttons[0].images[0];
+
                 }
                 else{
                     if(game.outcomeText.complete) {//text animation complete

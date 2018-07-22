@@ -552,41 +552,80 @@ var locations = [
                 image: document.getElementById('story-bounce'),
                 outcomes: [
                     {
-                        requirements: "game.stats.finesse.value >= 3",
                         text: [
                             {
                                 text: "You bounce around Mookie meadows having tons of fun!"
                             },
                             {
-                                text: "You try to do a flip and manage to do an amazing 360! It\'s a shame no one was there to see it."
+                                choice: [
+                                    {
+                                        label: "Do a flip!",
+                                        outcomes: [
+                                            {
+                                                requirements: "game.stats.finesse.value >=2",
+                                                text:[
+                                                    {
+                                                        text: "You roll to the far end of the field and begin bouncing as fast as you can."
+                                                    },
+                                                    {
+                                                        text: "You give your biggest bounce and rise into the air."
+                                                    },
+                                                    {
+                                                        text: "With all your finesse, you manage to land the jump perfectly!"
+                                                    },
+                                                    {
+                                                        text: "A near by bird is super impressed and sings you a charming song."
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        finesse: 1,
+                                                        charm: 2
+                                                    },
+                                                    lose: {}
+                                                }
+                                            },
+                                            {
+                                                requirements: "true",
+                                                text:[
+                                                    {
+                                                        text: "You roll to the far end of the field and begin bouncing as fast as you can."
+                                                    },
+                                                    {
+                                                        text: "You give your biggest bounce and rise into the air."
+                                                    },
+                                                    {
+                                                        text: "You rotate too far and end up landing with a thud right on your nose!"
+                                                    },
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        label: "Do a rolly-polly",
+                                        outcomes: [
+                                            {
+                                                text:[
+                                                    {
+                                                        text: "You do an adorable rolly-polly around the field."
+                                                    },
+                                                    {
+                                                        text: "You notice a shiny gold coin in the grass!"
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        finesse: 2,
+                                                        wealth: 1
+                                                    },
+                                                    lose: {}
+                                                }
+                                            }
+                                        ]
+                                    },
+                                ]
                             }
                         ],
-                        result: {
-                            gain: {
-                                finesse: 2,
-                                charm: 1
-                            },
-                            lose: {}
-                        }
-                    },
-                    {
-                        requirements: "true",
-                        text: [
-                            {
-                                text: "You bounce around Mookie meadows having tons of fun."
-                            },
-                            {
-                                text: "You try to do a flip but you aren\'t skilled enough and bang your head on the grass. Silly Mookie!"
-                            },
-                        ],
-                        result: {
-                            gain: {
-                                finesse: 1,
-                            },
-                            lose: {
-                                charm: 1
-                            }
-                        }
                     }
                 ]
             }

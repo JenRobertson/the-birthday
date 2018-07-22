@@ -286,7 +286,7 @@ var locations = [
                         }
                     },
                     {
-                        requirements: "game.stats.baking.value < 4",
+                        requirements: "game.stats.baking.value < 3",
                         text: [
                             {
                                 text: "You ask the baker if you can make a crumble."
@@ -692,7 +692,7 @@ var locations = [
         activities: [
             {
                 label: "The Baker",
-                image: document.getElementById('story-bake'),
+                image: document.getElementById('end-baker'),
                 outcomes: [
                     {
                         requirements: "game.stats.baking.value >= 3 && game.stats.farming.value >= 3",
@@ -1255,7 +1255,7 @@ var game = {
 var audio = {
     town: {
         audio: document.getElementById('audio-town'),
-        volume: 0.1
+        volume: 0.3
     },
     new_day_ding: {
         audio: document.getElementById('audio-new-day'),

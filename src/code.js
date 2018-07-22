@@ -12,9 +12,12 @@ function frame() {
         case 'title1':
             drawTitle1();
             break;
+        case 'intro':
+            drawIntro();
+            break;
         case 'title2':
         drawTitle2();
-        break;
+            break;
         case 'town':
             drawTown();
             break;
@@ -44,6 +47,15 @@ function drawTitle1() {
         image: document.getElementById("title1"),
     });
 }
+
+function drawIntro() {
+    drawAsset({
+        x: 0,
+        y: 0,
+        image: document.getElementById("intro"),
+    });
+}
+
 function drawTitle2() {
     drawAsset({
         x: 0,

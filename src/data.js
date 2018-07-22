@@ -266,9 +266,7 @@ var locations = [
                         ],
                         result: {
                             gain: {},
-                            lose: {
-                                finesse: 1
-                            }
+                            lose: {}
                         }
                     },
                     {
@@ -409,6 +407,29 @@ var locations = [
                                         label: "Drink the cider",
                                         outcomes: [
                                             {
+                                                requirements: "game.stats.farming.value >= 2 | game.stats.baking.value >= 2",
+                                                text:[
+                                                    {
+                                                        text: "You take a big swig of the cider..."
+                                                    },
+                                                    {
+                                                        text: "It\'s delicious!"
+                                                    },
+                                                    {
+                                                        text: "You are impressed with yourself and gain confidence."
+                                                    }
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        charm: 2,
+                                                        farming: 1,
+                                                        baking: 1,
+                                                    },
+                                                    lose: {}
+                                                }
+                                            },
+                                            {
+                                                requirements: "true",
                                                 text:[
                                                     {
                                                         text: "You take a big swig of the cider, only to discover that it is incredibly alcoholic...!"
@@ -439,6 +460,35 @@ var locations = [
                                         label: "Sell the cider",
                                         outcomes: [
                                             {
+                                                requirements: "game.stats.farming.value >= 2 | game.stats.baking.value >= 2",
+                                                text:[
+                                                    {
+                                                        text: "You ask if the apple farmer if he would like to buy your cider."
+                                                    },
+                                                    {
+                                                        text: "He takes a sniff of it and looks suprised. He takes a sip."
+                                                    },
+                                                    {
+                                                        text: "\"Wow Mookie, this cider is amazing! You really know your stuff!\""
+                                                    },
+                                                    {
+                                                        text: "\"I\'d love to buy a 3 barrels!\""
+                                                    },
+                                                    {
+                                                        text: "You work together on a branding campaign and name it \'Mookie Cider\'"
+                                                    },
+                                                ],
+                                                result: {
+                                                    gain: {
+                                                        wealth: 6,
+                                                        baking: 2,
+                                                        farming: 2,
+                                                    },
+                                                    lose: {}
+                                                }
+                                            },
+                                            {
+                                                requirements: "true",
                                                 text:[
                                                     {
                                                         text: "You ask if the apple farmer if he would like to buy your cider."
@@ -464,12 +514,6 @@ var locations = [
                                 ]
                             }
                         ],
-                        result: {
-                            gain: {},
-                            lose: {
-                                finesse: 1
-                            }
-                        }
                     },
                 ]
             },

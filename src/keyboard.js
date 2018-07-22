@@ -3,6 +3,9 @@ document.onkeydown = function(e) {
         case 'title1':
             title1Keyboard(e);
             break;
+        case 'intro':
+            introKeyboard(e);
+            break;
         case 'title2':
             title2Keyboard(e);
         break;
@@ -199,6 +202,11 @@ function partyKeyboard(e){
 
 // title1
 function title1Keyboard(e){// opening title
+    game.screen = "intro";
+}
+
+// title1
+function introKeyboard(e){// opening title
     game.screen = "town";
 }
 
